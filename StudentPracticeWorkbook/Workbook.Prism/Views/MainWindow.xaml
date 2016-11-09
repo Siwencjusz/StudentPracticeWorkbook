@@ -1,0 +1,17 @@
+﻿<Window x:Class="Workbook.Prism.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:prism="http://prismlibrary.com/"
+        prism:ViewModelLocator.AutoWireViewModel="True"
+        Title="{x:Static commons:Strings.AppName}" Height="350" Width="525"
+        xmlns:commons="clr-namespace:Workbook.Commons;assembly=Workbook.Commons">
+
+    <StackPanel>
+        <DockPanel>
+            <Label DockPanel.Dock="Left" Content="{x:Static commons:Strings.AppName}"></Label>
+            <ContentControl DockPanel.Dock="Right" prism:RegionManager.RegionName="NavRegion"/>
+        </DockPanel>
+        <Separator></Separator>
+        <ContentControl prism:RegionManager.RegionName="ContentRegion" />
+    </StackPanel>
+</Window>

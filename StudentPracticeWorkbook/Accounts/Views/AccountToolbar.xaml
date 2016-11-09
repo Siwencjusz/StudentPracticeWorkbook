@@ -1,0 +1,14 @@
+﻿<UserControl x:Class="Accounts.Views.AccountToolbar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:prism="http://prismlibrary.com/"             
+             prism:ViewModelLocator.AutoWireViewModel="True">
+    <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+        <StackPanel.Resources>
+            <BooleanToVisibilityConverter x:Key="boolToVis" />
+        </StackPanel.Resources>
+        <Label Content="{Binding LoggedUser}"></Label>
+        <Button x:Name="buttonSignIn" Width="75" Content="{Binding UserIsLoggedButtonString}" Command="{Binding Path=LogInOrOut}"/>
+
+    </StackPanel>
+</UserControl>

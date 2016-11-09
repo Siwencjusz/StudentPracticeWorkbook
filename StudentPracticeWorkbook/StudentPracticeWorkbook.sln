@@ -1,9 +1,23 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentPracticeWorkbook", "StudentPracticeWorkbook\StudentPracticeWorkbook.csproj", "{C091BE0B-6686-4D43-92C3-9B100F7BD107}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Workbook.Prism", "Workbook.Prism\Workbook.Prism.csproj", "{99C9E82C-C594-446D-AA59-8FFBC43AD226}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PrismModules", "PrismModules", "{F4AC94EF-A441-4C3A-9A7F-56F3F8C0711D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Workbook.BLL", "Workbook.BLL\Workbook.BLL.csproj", "{7BDE8213-656A-4E9E-B250-FD389F58998C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Workbook.DAL", "Workbook.DAL\Workbook.DAL.csproj", "{4EBDC7BF-2E8D-455D-A6B3-6CD902B76476}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Main", "Main\Main.csproj", "{AB8B448C-DD74-4D60-A041-3E5D03A32180}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Accounts", "Accounts\Accounts.csproj", "{7C61CE53-D598-467D-B9E3-6EE70BC13F5F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Workbook.Commons", "Workbook.Commons\Workbook.Commons.csproj", "{854A2BE2-7A65-49B6-9E3B-5F169E9F5A03}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,8 +29,36 @@ Global
 		{C091BE0B-6686-4D43-92C3-9B100F7BD107}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C091BE0B-6686-4D43-92C3-9B100F7BD107}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C091BE0B-6686-4D43-92C3-9B100F7BD107}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99C9E82C-C594-446D-AA59-8FFBC43AD226}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99C9E82C-C594-446D-AA59-8FFBC43AD226}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99C9E82C-C594-446D-AA59-8FFBC43AD226}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99C9E82C-C594-446D-AA59-8FFBC43AD226}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7BDE8213-656A-4E9E-B250-FD389F58998C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BDE8213-656A-4E9E-B250-FD389F58998C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BDE8213-656A-4E9E-B250-FD389F58998C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BDE8213-656A-4E9E-B250-FD389F58998C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4EBDC7BF-2E8D-455D-A6B3-6CD902B76476}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4EBDC7BF-2E8D-455D-A6B3-6CD902B76476}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4EBDC7BF-2E8D-455D-A6B3-6CD902B76476}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4EBDC7BF-2E8D-455D-A6B3-6CD902B76476}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB8B448C-DD74-4D60-A041-3E5D03A32180}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB8B448C-DD74-4D60-A041-3E5D03A32180}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB8B448C-DD74-4D60-A041-3E5D03A32180}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB8B448C-DD74-4D60-A041-3E5D03A32180}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C61CE53-D598-467D-B9E3-6EE70BC13F5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C61CE53-D598-467D-B9E3-6EE70BC13F5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C61CE53-D598-467D-B9E3-6EE70BC13F5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C61CE53-D598-467D-B9E3-6EE70BC13F5F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{854A2BE2-7A65-49B6-9E3B-5F169E9F5A03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{854A2BE2-7A65-49B6-9E3B-5F169E9F5A03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{854A2BE2-7A65-49B6-9E3B-5F169E9F5A03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{854A2BE2-7A65-49B6-9E3B-5F169E9F5A03}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{AB8B448C-DD74-4D60-A041-3E5D03A32180} = {F4AC94EF-A441-4C3A-9A7F-56F3F8C0711D}
+		{7C61CE53-D598-467D-B9E3-6EE70BC13F5F} = {F4AC94EF-A441-4C3A-9A7F-56F3F8C0711D}
 	EndGlobalSection
 EndGlobal
