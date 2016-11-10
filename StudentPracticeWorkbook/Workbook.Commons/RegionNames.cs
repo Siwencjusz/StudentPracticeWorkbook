@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace Workbook.Commons
 {
-    public class RegionNames
+    public static class RegionNames
     {
         public static string NavRegion = "NavRegion";
         public static string ContentRegion = "ContentRegion";
+        public static string MenuRegion = "MenuRegion";
     }
 }

@@ -102,6 +102,9 @@
     <Compile Include="Views\LoginForm.xaml.cs">
       <DependentUpon>LoginForm.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\LoginMenuView.xaml.cs">
+      <DependentUpon>LoginMenuView.xaml</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -114,9 +117,25 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Admin\Admin.csproj">
+      <Project>{3925D7B7-DCBC-4FFA-ABAF-E2EAF2A1DEFA}</Project>
+      <Name>Admin</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Company\Company.csproj">
+      <Project>{2D7817BC-855E-4264-AC83-FBB43702112E}</Project>
+      <Name>Company</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Main\Main.csproj">
       <Project>{AB8B448C-DD74-4D60-A041-3E5D03A32180}</Project>
       <Name>Main</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Student\Student.csproj">
+      <Project>{86128368-E8A2-49EB-B496-9CF1467CF2A6}</Project>
+      <Name>Student</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Supervisor\Supervisor.csproj">
+      <Project>{FB852654-C4FC-4AB3-8981-48E9F47090DB}</Project>
+      <Name>Supervisor</Name>
     </ProjectReference>
     <ProjectReference Include="..\Workbook.Commons\Workbook.Commons.csproj">
       <Project>{854a2be2-7a65-49b6-9e3b-5f169e9f5a03}</Project>
@@ -129,6 +148,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\LoginForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LoginMenuView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

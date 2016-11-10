@@ -5,8 +5,12 @@ using Prism.Unity;
 using Workbook.Prism.Views;
 using System.Windows;
 using Accounts;
+using Admin;
+using Company;
 using Main;
 using Prism.Modularity;
+using Student;
+using Supervisor;
 
 namespace Workbook.Prism
 {
@@ -20,6 +24,7 @@ namespace Workbook.Prism
         protected override void InitializeShell()
         {
             Application.Current.MainWindow.Show();
+            
         }
 
         protected override void ConfigureModuleCatalog()
@@ -28,9 +33,20 @@ namespace Workbook.Prism
 
             List<Type> ModulesList = new List<Type>()
             {
-                typeof(MainModule),
-                typeof(AccountsModule)
+               // typeof(MainModule),
+                //typeof(AccountsModule),
+                typeof(AdminModule),
+                typeof(CompanyModule),
+                typeof(StudentModule),
+                typeof(SupervisorModule)
             };
+
+            ModuleCatalog.AddModule(new ModuleInfo()
+            {
+                ModuleName = typeof(AccountsModule).Name,
+                ModuleType = typeof(AccountsModule).AssemblyQualifiedName,
+                InitializationMode = InitializationMode.WhenAvailable
+            });
 
             AddModules(ModulesList);
         }
@@ -43,7 +59,7 @@ namespace Workbook.Prism
                 {
                     ModuleName = module.Name,
                     ModuleType = module.AssemblyQualifiedName,
-                    InitializationMode = InitializationMode.WhenAvailable
+                    InitializationMode = InitializationMode.OnDemand
                 });
             }
         }

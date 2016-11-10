@@ -8,7 +8,15 @@ using System.Windows;
 using System.Windows.Data;
 using System.Windows.Input;
 using Accounts.Views;
+using Admin.Views;
+using Company;
+using Company.Views;
+using Prism.Modularity;
 using Prism.Regions;
+using Student;
+using Student.Views;
+using Supervisor;
+using Supervisor.Views;
 using Workbook.Commons;
 
 namespace Accounts.ViewModels
@@ -17,11 +25,13 @@ namespace Accounts.ViewModels
     {
         private readonly RegionManager _regionManager;
         private readonly LoggedUserService _loggedUserService;
+        private readonly ModuleManager _moduleManager;
 
-        public AccountToolbarViewModel(RegionManager regionManager, LoggedUserService loggedUserService)
+        public AccountToolbarViewModel(RegionManager regionManager, LoggedUserService loggedUserService, ModuleManager moduleManager)
         {
             _regionManager = regionManager;
             _loggedUserService = loggedUserService;
+            _moduleManager = moduleManager;
         }
 
 
@@ -33,7 +43,7 @@ namespace Accounts.ViewModels
         }
 
 
-        public string UserIsLoggedButtonString => _loggedUserService.UserIsLogged ? "Zaloguj" : "Wyloguj";
+        public string UserIsLoggedButtonString => _loggedUserService.UserIsLogged ? "Wyloguj" : "Zaloguj";
 
         public bool UserIsLogged
         {
@@ -55,12 +65,14 @@ namespace Accounts.ViewModels
             if (_loggedUserService.UserIsLogged)
             {
                 UserIsLogged = false;
-                _regionManager.RequestNavigate(RegionNames.ContentRegion, typeof(LoginForm).ToString());
+                _moduleManager.LoadModule(typeof(SupervisorModule).Name);
+                _regionManager.RequestNavigate(RegionNames.MenuRegion, typeof(SupervisorMenuView).ToString());
             }
             else
             {
                 UserIsLogged = true;
-                _regionManager.RequestNavigate(RegionNames.ContentRegion, typeof(Main.Views.Main).ToString());
+                _regionManager.RequestNavigate(RegionNames.ContentRegion, typeof(LoginForm).ToString());
+                _regionManager.RequestNavigate(RegionNames.MenuRegion, typeof(LoginMenuView).ToString());
             }
         }
     }

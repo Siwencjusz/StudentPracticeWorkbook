@@ -30,6 +30,10 @@ namespace Accounts
             _container.RegisterType<LoginForm>();
             _regionManager.RegisterViewWithRegion(RegionNames.ContentRegion, typeof(LoginForm));
             _regionManager.Regions[RegionNames.ContentRegion].Add(_container.Resolve<LoginForm>());
+
+            _container.RegisterType<LoginMenuView>();
+            _regionManager.RegisterViewWithRegion(RegionNames.MenuRegion, typeof(LoginMenuView));
+            _regionManager.Regions[RegionNames.MenuRegion].Add(_container.Resolve<LoginMenuView>());
         }
     }
 }

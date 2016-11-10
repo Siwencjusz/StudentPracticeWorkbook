@@ -19,9 +19,9 @@ namespace Main
 
         public void Initialize()
         {
-            _container.RegisterType<Views.Main>();
+            //_container.RegisterType<Views.Main>();
             _regionManager.RegisterViewWithRegion(RegionNames.ContentRegion, typeof(Views.Main));
-            _regionManager.Regions[RegionNames.ContentRegion].Add(_container.Resolve<Views.Main>());
+            //_regionManager.Regions[RegionNames.ContentRegion].Add(_container.Resolve<Views.Main>());
         }
     }
 }
