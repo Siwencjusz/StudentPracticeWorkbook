@@ -1,0 +1,13 @@
+﻿<UserControl x:Class="Supervisor.Views.SupervisorMenuView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:prism="http://prismlibrary.com/"             
+             prism:ViewModelLocator.AutoWireViewModel="True">
+    <StackPanel>
+        <Label Content="Supervisor menu"></Label>
+        <Button Content="Wydziały" Command="{Binding NavigationCommand}" CommandParameter="Supervisor.Views.SupervisorDepartmentsView"></Button>
+        <Button Content="Firmy" Command="{Binding NavigationCommand}" CommandParameter="Supervisor.Views.SupervisorCompaniesView"></Button>
+        <Button Content="Dzienniki" Command="{Binding NavigationCommand}" CommandParameter="Supervisor.Views.SupervisorWorkbooksView"></Button>
+        <Button Content="Studenci" Command="{Binding NavigationCommand}" CommandParameter="Supervisor.Views.SupervisorStudentsView"></Button>
+    </StackPanel>
+</UserControl>
