@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Workbook.DAL
+namespace Workbook.DAL.Entities.baseEntity
 {
-    public class Class1
+    public class EntityBase
     {
+        public int Id { get; set; }
     }
 }
