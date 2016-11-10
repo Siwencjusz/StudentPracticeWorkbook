@@ -56,6 +56,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dapper\BaseRepo\BaseRepository.cs" />
+    <Compile Include="Dapper\BaseRepo\QueryResult.cs" />
+    <Compile Include="Dapper\BaseRepo\DynamicQuery.cs" />
+    <Compile Include="Dapper\BaseRepo\DapperExtensions.cs" />
     <Compile Include="Dapper\BaseRepo\IRepository.cs" />
     <Compile Include="DbStrings.cs" />
     <Compile Include="Entities\baseEntity\EntityBase.cs" />
