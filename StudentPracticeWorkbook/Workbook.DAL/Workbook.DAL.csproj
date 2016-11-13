@@ -55,25 +55,44 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dapper\Interfaces\IDepartmentRepository.cs" />
+    <Compile Include="Dapper\Interfaces\IRoleRepository.cs" />
+    <Compile Include="Dapper\Interfaces\IUserRepository.cs" />
+    <Compile Include="Dapper\Interfaces\IWorkBookRepository.cs" />
+    <Compile Include="Dapper\Repos\BookNoteRepository.cs" />
+    <Compile Include="Dapper\Repos\DepartmentRepository.cs" />
+    <Compile Include="Dapper\Interfaces\IUserNoteRepository.cs" />
+    <Compile Include="Dapper\Repos\RoleRepository.cs" />
+    <Compile Include="Dapper\Repos\UserRepository.cs" />
+    <Compile Include="Dapper\Repos\WorkBookRepository.cs" />
+    <Compile Include="Migrations\201611131235589_initial.cs" />
+    <Compile Include="Migrations\201611131235589_initial.Designer.cs">
+      <DependentUpon>201611131235589_initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StudentWorkBookContext.cs" />
     <Compile Include="Dapper\BaseRepo\BaseRepository.cs" />
-    <Compile Include="Dapper\BaseRepo\QueryResult.cs" />
-    <Compile Include="Dapper\BaseRepo\DynamicQuery.cs" />
-    <Compile Include="Dapper\BaseRepo\DapperExtensions.cs" />
+    <Compile Include="Dapper\QueryResult.cs" />
+    <Compile Include="Dapper\DynamicQuery.cs" />
+    <Compile Include="Dapper\DapperExtensions.cs" />
     <Compile Include="Dapper\BaseRepo\IRepository.cs" />
-    <Compile Include="DbStrings.cs" />
     <Compile Include="Entities\baseEntity\EntityBase.cs" />
     <Compile Include="Entities\Department.cs" />
     <Compile Include="Entities\Role.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Entities\WorkBook.cs" />
     <Compile Include="Entities\BookNote.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201611131235589_initial.resx">
+      <DependentUpon>201611131235589_initial.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

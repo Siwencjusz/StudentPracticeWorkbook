@@ -9,7 +9,7 @@ namespace Workbook.DAL.Entities.baseEntity
 {
     public class EntityBase
     {
-        [Key]
+        [Key,Required]
         public Guid Id { get; set; }
     }
 }

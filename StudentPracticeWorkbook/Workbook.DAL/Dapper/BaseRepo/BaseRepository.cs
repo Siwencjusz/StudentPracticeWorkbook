@@ -9,7 +9,7 @@ using Dapper;
 using Workbook.DAL.Entities.baseEntity;
 namespace Workbook.DAL.Dapper.BaseRepo
 {
-    public abstract class Repository<T> : IRepository<T> where T : EntityBase
+    public abstract class BaseRepository<T> : IRepository<T> where T : EntityBase
     {
         private readonly string _tableName;
 
@@ -17,11 +17,11 @@ namespace Workbook.DAL.Dapper.BaseRepo
         {
             get
             {
-                return new SqlConnection(ConfigurationManager.ConnectionStrings["StudenBook"].ConnectionString);
+                return new SqlConnection(ConfigurationManager.ConnectionStrings["StudentWorkBook"].ConnectionString);
             }
         }
 
-        public Repository(string tableName)
+        public BaseRepository(string tableName)
         {
             _tableName = tableName;
         }
