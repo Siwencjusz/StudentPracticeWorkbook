@@ -96,6 +96,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="ViewModels\AccountToolbarViewModel.cs" />
+    <Compile Include="ViewModels\LoginFormViewModel.cs" />
     <Compile Include="Views\AccountToolbar.xaml.cs">
       <DependentUpon>AccountToolbar.xaml</DependentUpon>
     </Compile>
@@ -104,6 +105,9 @@
     </Compile>
     <Compile Include="Views\LoginMenuView.xaml.cs">
       <DependentUpon>LoginMenuView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LoginToolbarView.xaml.cs">
+      <DependentUpon>LoginToolbarView.xaml</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -137,9 +141,17 @@
       <Project>{FB852654-C4FC-4AB3-8981-48E9F47090DB}</Project>
       <Name>Supervisor</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Workbook.BLL\Workbook.BLL.csproj">
+      <Project>{7BDE8213-656A-4E9E-B250-FD389F58998C}</Project>
+      <Name>Workbook.BLL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Workbook.Commons\Workbook.Commons.csproj">
       <Project>{854a2be2-7a65-49b6-9e3b-5f169e9f5a03}</Project>
       <Name>Workbook.Commons</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Workbook.DAL\Workbook.DAL.csproj">
+      <Project>{4EBDC7BF-2E8D-455D-A6B3-6CD902B76476}</Project>
+      <Name>Workbook.DAL</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -152,6 +164,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\LoginMenuView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LoginToolbarView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

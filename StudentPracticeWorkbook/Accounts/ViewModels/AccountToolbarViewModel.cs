@@ -39,23 +39,17 @@ namespace Accounts.ViewModels
         public string LoggedUser
         {
             get { return _loggedUserService.LoggedUser; }
-            set { SetProperty(ref _loggedUserService.LoggedUser, value); }
         }
-
-
-        public string UserIsLoggedButtonString => _loggedUserService.UserIsLogged ? "Wyloguj" : "Zaloguj";
-
         public bool UserIsLogged
         {
             get { return _loggedUserService.UserIsLogged; }
             set
             {
                 _loggedUserService.UserIsLogged = value;
-                OnPropertyChanged(nameof(UserIsLoggedButtonString));
             }
         }
 
-        public ICommand LogInOrOut
+        public ICommand LogOut
         {
             get { return new DelegateCommand<object>(OnLoginHit, (x)=>true); }
         }
@@ -65,15 +59,12 @@ namespace Accounts.ViewModels
             if (_loggedUserService.UserIsLogged)
             {
                 UserIsLogged = false;
-                _moduleManager.LoadModule(typeof(SupervisorModule).Name);
-                _regionManager.RequestNavigate(RegionNames.MenuRegion, typeof(SupervisorMenuView).ToString());
-            }
-            else
-            {
-                UserIsLogged = true;
+
                 _regionManager.RequestNavigate(RegionNames.ContentRegion, typeof(LoginForm).ToString());
                 _regionManager.RequestNavigate(RegionNames.MenuRegion, typeof(LoginMenuView).ToString());
+                _regionManager.RequestNavigate(RegionNames.NavRegion, typeof(LoginToolbarView).ToString());
             }
+
         }
     }
 }

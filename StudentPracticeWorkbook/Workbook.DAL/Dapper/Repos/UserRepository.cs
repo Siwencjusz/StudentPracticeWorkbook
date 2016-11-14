@@ -4,7 +4,7 @@ using Workbook.DAL.Entities;
 
 namespace Workbook.DAL.Dapper.Repos
 {
-    public sealed class UserRepository :  BaseRepository<User>, IUserNoteRepository
+    public sealed class UserRepository :  BaseRepository<User>, IUserRepository
     {
         public UserRepository() : base("Users")
         {

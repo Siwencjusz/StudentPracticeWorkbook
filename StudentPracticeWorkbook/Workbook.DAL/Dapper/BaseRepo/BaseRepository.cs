@@ -57,6 +57,7 @@ namespace Workbook.DAL.Dapper.BaseRepo
             {
                 cn.Open();
                 cn.Execute("DELETE FROM " + _tableName + " WHERE ID=@ID", new { ID = item.Id });
+
             }
         }
 

@@ -1,3 +1,6 @@
+using Workbook.Commons;
+using Workbook.DAL.Entities;
+
 namespace Workbook.DAL.Migrations
 {
     using System;
@@ -19,12 +22,41 @@ namespace Workbook.DAL.Migrations
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data. E.g.
             //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
+            //Role[] roles = new[]
+            //{
+            //    new Role
+            //    {
+            //        Id = new Guid(),
+            //        Name = AppRoles.Admin.ToString()
+            //    },
+            //    new Role
+            //    {
+            //        Id = new Guid(),
+            //        Name = AppRoles.Firma.ToString()
+            //    },
+            //    new Role
+            //    {
+            //        Id = new Guid(),
+            //        Name = AppRoles.Opiekun.ToString()
+            //    },
+            //    new Role
+            //    {
+            //        Id = new Guid(),
+            //        Name = AppRoles.Student.ToString()
+            //    }
+            //};
+            //context.Roles.AddOrUpdate(roles);
+            //context.Users.AddOrUpdate(
+            //    new User()
+            //    {
+            //        Id = new Guid(),
+            //        Login = "user",
+            //        HashPassword = "user",
+            //        Email = "userMail",
+            //        PhoneNumber = "666",
+            //        Role = roles[0]
+            //    }
+            //);
             //
         }
     }

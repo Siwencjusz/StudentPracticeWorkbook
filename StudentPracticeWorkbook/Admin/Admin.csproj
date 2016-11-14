@@ -90,6 +90,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="ViewModels\AdminDepartmentsViewModel.cs" />
     <Compile Include="ViewModels\AdminMenuViewModel.cs" />
     <Compile Include="Views\AdminCompaniesView.xaml.cs">
       <DependentUpon>AdminCompaniesView.xaml</DependentUpon>
@@ -148,6 +149,10 @@
     <ProjectReference Include="..\Workbook.Commons\Workbook.Commons.csproj">
       <Project>{854A2BE2-7A65-49B6-9E3B-5F169E9F5A03}</Project>
       <Name>Workbook.Commons</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Workbook.DAL\Workbook.DAL.csproj">
+      <Project>{4EBDC7BF-2E8D-455D-A6B3-6CD902B76476}</Project>
+      <Name>Workbook.DAL</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

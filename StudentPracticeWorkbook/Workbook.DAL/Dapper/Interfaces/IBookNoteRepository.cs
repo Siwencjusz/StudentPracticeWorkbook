@@ -1,6 +1,6 @@
 ﻿namespace Workbook.DAL.Dapper.Repos
 {
-    public interface IUserNoteRepository
+    public interface IBookNoteRepository
     {
     }
 }

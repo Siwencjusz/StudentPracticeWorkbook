@@ -16,6 +16,12 @@ namespace Workbook.Prism
 {
     class Bootstrapper : UnityBootstrapper
     {
+        protected override void ConfigureContainer()
+        {
+            base.ConfigureContainer();
+
+        }
+
         protected override DependencyObject CreateShell()
         {
             return Container.Resolve<MainWindow>();

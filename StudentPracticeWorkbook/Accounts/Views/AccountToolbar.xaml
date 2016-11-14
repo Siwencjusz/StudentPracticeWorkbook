@@ -4,11 +4,8 @@
              xmlns:prism="http://prismlibrary.com/"             
              prism:ViewModelLocator.AutoWireViewModel="True">
     <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
-        <StackPanel.Resources>
-            <BooleanToVisibilityConverter x:Key="boolToVis" />
-        </StackPanel.Resources>
         <Label Content="{Binding LoggedUser}"></Label>
-        <Button x:Name="buttonSignIn" Width="75" Content="{Binding UserIsLoggedButtonString}" Command="{Binding Path=LogInOrOut}"/>
+        <Button x:Name="buttonSignIn" Width="75" Content="Wyloguj" Command="{Binding Path=LogOut}"></Button>
 
     </StackPanel>
 </UserControl>

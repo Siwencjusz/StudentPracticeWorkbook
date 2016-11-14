@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Workbook.BLL.Services.Base;
+using Workbook.DAL.Dapper.Interfaces;
+using Workbook.DAL.Dapper.Repos;
 
 namespace User.BLL.Services.Serv
 {
@@ -11,10 +13,13 @@ namespace User.BLL.Services.Serv
     {
         private readonly IRepository<Workbook.DAL.Entities.User> _baseRepository;
 
-        public UserService(IRepository<Workbook.DAL.Entities.User> baseRepository) : base(baseRepository)
+        public UserService(UserRepository baseRepository) : base(baseRepository)
         {
             _baseRepository = baseRepository;
         }
         
+
+        
+
     }
 }

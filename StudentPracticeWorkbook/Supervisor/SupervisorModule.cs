@@ -2,6 +2,7 @@
 using Prism.Regions;
 using System;
 using Microsoft.Practices.Unity;
+using Supervisor.Views;
 using Workbook.Commons;
 
 namespace Supervisor
@@ -24,6 +25,7 @@ namespace Supervisor
             _regionManager.RegisterViewWithRegion(RegionNames.ContentRegion, typeof(Views.SupervisorDepartmentsView));
             _regionManager.RegisterViewWithRegion(RegionNames.ContentRegion, typeof(Views.SupervisorStudentsView));
             _regionManager.RegisterViewWithRegion(RegionNames.ContentRegion, typeof(Views.SupervisorWorkbooksView));
+
         }
     }
 }
