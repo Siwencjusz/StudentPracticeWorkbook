@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Workbook.BLL.Services.Base;
+using Workbook.BLL.Services.Interfaces;
 using Workbook.DAL.Entities;
 
 namespace Workbook.BLL.Services.Serv

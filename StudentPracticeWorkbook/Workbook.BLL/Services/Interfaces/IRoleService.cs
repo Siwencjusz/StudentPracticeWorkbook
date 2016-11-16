@@ -1,6 +1,8 @@
-﻿namespace Workbook.BLL.Services.Serv
+﻿using Workbook.DAL.Entities;
+using Workbook.BLL.Services.Base;
+namespace Workbook.BLL.Services.Serv
 {
-    public interface IRoleService
+    public interface IRoleService : IBaseService<Role>
     {
     }
 }

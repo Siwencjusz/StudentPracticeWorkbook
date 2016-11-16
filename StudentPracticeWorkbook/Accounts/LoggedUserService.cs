@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Practices.Unity;
 using User.BLL.Services.Serv;
+using Workbook.BLL.Services.Interfaces;
 using Workbook.DAL.Entities;
 
 namespace Accounts

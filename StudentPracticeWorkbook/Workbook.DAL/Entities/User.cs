@@ -20,11 +20,11 @@ namespace Workbook.DAL.Entities
         [Required]
         public string Email { get; set; }
         public string DetailInformation { get; set; }
-        [Required, ForeignKey("DepartmentId")]
+        [ForeignKey("DepartmentId")]
         public virtual Department Department { get; set; }
 
         public Guid? DepartmentId { get; set; }
-        [Required,ForeignKey("RoleId")]
+        [ForeignKey("RoleId")]
         public virtual Role Role { get; set; }
         public Guid? RoleId { get; set; }
         public virtual List<WorkBook> WorkBooks { get; set; }

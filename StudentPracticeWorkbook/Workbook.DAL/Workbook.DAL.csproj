@@ -65,9 +65,13 @@
     <Compile Include="Dapper\Repos\RoleRepository.cs" />
     <Compile Include="Dapper\Repos\UserRepository.cs" />
     <Compile Include="Dapper\Repos\WorkBookRepository.cs" />
-    <Compile Include="Migrations\201611131235589_initial.cs" />
-    <Compile Include="Migrations\201611131235589_initial.Designer.cs">
-      <DependentUpon>201611131235589_initial.cs</DependentUpon>
+    <Compile Include="Migrations\201611161125402_initial.cs" />
+    <Compile Include="Migrations\201611161125402_initial.Designer.cs">
+      <DependentUpon>201611161125402_initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611161134040_Second.cs" />
+    <Compile Include="Migrations\201611161134040_Second.Designer.cs">
+      <DependentUpon>201611161134040_Second.cs</DependentUpon>
     </Compile>
     <Compile Include="StudentWorkBookContext.cs" />
     <Compile Include="Dapper\BaseRepo\BaseRepository.cs" />
@@ -89,15 +93,18 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201611131235589_initial.resx">
-      <DependentUpon>201611131235589_initial.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\Workbook.Commons\Workbook.Commons.csproj">
       <Project>{854a2be2-7a65-49b6-9e3b-5f169e9f5a03}</Project>
       <Name>Workbook.Commons</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201611161125402_initial.resx">
+      <DependentUpon>201611161125402_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611161134040_Second.resx">
+      <DependentUpon>201611161134040_Second.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

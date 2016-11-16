@@ -13,32 +13,32 @@ namespace Workbook.BLL.Services.Base
         {
             _baseRepository = baseRepository;
         }
-        public void Add(T item)
+        public virtual void Add(T item)
         {
             _baseRepository.Add(item);
         }
 
-        public void Remove(T item)
+        public virtual void Remove(T item)
         {
             _baseRepository.Remove(item);
         }
 
-        public void Update(T item)
+        public virtual void Update(T item)
         {
             _baseRepository.Update(item);
         }
 
-        public T FindByID(Guid id)
+        public virtual T FindByID(Guid id)
         {
             return _baseRepository.FindByID(id);
         }
 
-        public IEnumerable<T> Find(Expression<Func<T, bool>> predicate)
+        public virtual IEnumerable<T> Find(Expression<Func<T, bool>> predicate)
         {
             return _baseRepository.Find(predicate);
         }
 
-        public IEnumerable<T> FindAll()
+        public virtual IEnumerable<T> FindAll()
         {
             return _baseRepository.FindAll();
         }

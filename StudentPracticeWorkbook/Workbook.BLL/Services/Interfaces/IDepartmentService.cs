@@ -1,6 +1,9 @@
-﻿namespace Workbook.BLL.Services.Serv
+﻿using Workbook.BLL.Services.Base;
+using Workbook.DAL.Entities;
+
+namespace Workbook.BLL.Services.Serv
 {
-    public interface IDepartmentService
+    public interface IDepartmentService : IBaseService<Department>
     {
     }
 }

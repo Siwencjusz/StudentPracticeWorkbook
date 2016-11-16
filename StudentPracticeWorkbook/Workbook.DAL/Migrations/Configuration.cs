@@ -46,18 +46,35 @@ namespace Workbook.DAL.Migrations
             //    }
             //};
             //context.Roles.AddOrUpdate(roles);
-            //context.Users.AddOrUpdate(
-            //    new User()
-            //    {
-            //        Id = new Guid(),
-            //        Login = "user",
-            //        HashPassword = "user",
-            //        Email = "userMail",
-            //        PhoneNumber = "666",
-            //        Role = roles[0]
-            //    }
-            //);
-            //
+            context.Roles.AddOrUpdate(
+                new Role()
+                {
+                    Id= new Guid("AAE154BC-4F6B-4FDD-95D1-ECED015A4934"),
+                    Name = "Admin"
+                }
+            );
+            context.Departments.AddOrUpdate(
+                new Department()
+                {
+                    Id = new Guid("AAE154BC-4F6B-4FDD-95D1-ECED015A4934"),
+                    Name = "Admin"
+                }
+            );
+            context.Users.AddOrUpdate(
+
+                new User()
+                {
+                    Id = new Guid(),
+                    Login = "user",
+                    //user
+                    HashPassword = "EE11CBB19052E40B07AAC0CA060C23EE",
+                    Email = "userMail",
+                    PhoneNumber = "666",
+                    RoleId = new Guid("AAE154BC-4F6B-4FDD-95D1-ECED015A4934"),
+                    DepartmentId = new Guid("AAE154BC-4F6B-4FDD-95D1-ECED015A4934")
+                }
+            );
+
         }
     }
 }
