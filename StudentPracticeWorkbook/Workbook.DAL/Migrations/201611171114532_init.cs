@@ -3,7 +3,7 @@ namespace Workbook.DAL.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class initial : DbMigration
+    public partial class init : DbMigration
     {
         public override void Up()
         {
@@ -50,17 +50,19 @@ namespace Workbook.DAL.Migrations
                 c => new
                     {
                         Id = c.Guid(nullable: false),
+                        Name = c.String(),
+                        LastName = c.String(),
                         PhoneNumber = c.String(nullable: false),
                         Login = c.String(nullable: false),
                         HashPassword = c.String(nullable: false),
                         Email = c.String(nullable: false),
                         DetailInformation = c.String(),
-                        DepartmentId = c.Guid(nullable: false),
-                        RoleId = c.Guid(nullable: false),
+                        DepartmentId = c.Guid(),
+                        RoleId = c.Guid(),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Departments", t => t.DepartmentId, cascadeDelete: true)
-                .ForeignKey("dbo.Roles", t => t.RoleId, cascadeDelete: true)
+                .ForeignKey("dbo.Departments", t => t.DepartmentId)
+                .ForeignKey("dbo.Roles", t => t.RoleId)
                 .Index(t => t.DepartmentId)
                 .Index(t => t.RoleId);
             

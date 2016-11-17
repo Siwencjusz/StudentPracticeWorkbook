@@ -13,10 +13,10 @@ namespace User.BLL.Services.Serv
 {
     public sealed class UserService : BaseService<Workbook.DAL.Entities.User>, IUserService
     {
-        private readonly IRepository<Workbook.DAL.Entities.User> _baseRepository;
+        private readonly IUserRepository _baseRepository;
         private readonly MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider();
 
-        public UserService(UserRepository baseRepository) : base(baseRepository)
+        public UserService(IUserRepository baseRepository) : base(baseRepository)
         {
             _baseRepository = baseRepository;
         }

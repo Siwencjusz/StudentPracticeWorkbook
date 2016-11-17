@@ -38,6 +38,7 @@ namespace Workbook.DAL.Dapper.BaseRepo
             {
                 return _result.Item2;
             }
+            set { throw new NotImplementedException(); }
         }
 
         /// <summary>

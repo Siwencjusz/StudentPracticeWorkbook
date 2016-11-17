@@ -28,9 +28,9 @@ namespace Accounts.ViewModels
         private readonly RegionManager _regionManager;
         private readonly LoggedUserService _loggedUserService;
         private readonly ModuleManager _moduleManager;
-        private readonly RoleService _authorizeService;
+        private readonly AuthorizeService _authorizeService;
 
-        public LoginFormViewModel(RegionManager regionManager, LoggedUserService loggedUserService, ModuleManager moduleManager, RoleService authorizeService)
+        public LoginFormViewModel(RegionManager regionManager, LoggedUserService loggedUserService, ModuleManager moduleManager, AuthorizeService authorizeService)
         {
             _regionManager = regionManager;
             _loggedUserService = loggedUserService;
@@ -62,24 +62,31 @@ namespace Accounts.ViewModels
         private void OnLoginHit(object obj)
         {
 
-            
+            var x=_authorizeService.GetAuthorizedUser(_id, _pw);
 
-            if (Id == AppRoles.Opiekun.ToString())
+            if (x == null)
+            {
+                return;
+            }
+
+            _loggedUserService.ActiveUser = x;
+
+            if (x.Role.Name == AppRoles.Opiekun.ToString())
             {
                 _moduleManager.LoadModule(typeof(SupervisorModule).Name);
                 _regionManager.RequestNavigate(RegionNames.ContentRegion, typeof(SupervisorStudentsView).ToString());
                 _regionManager.RequestNavigate(RegionNames.MenuRegion, typeof(SupervisorMenuView).ToString());
-            }else if (Id == AppRoles.Admin.ToString())
+            }else if (x.Role.Name == AppRoles.Admin.ToString())
             {
                 _moduleManager.LoadModule(typeof(AdminModule).Name);
                 _regionManager.RequestNavigate(RegionNames.ContentRegion, typeof(AdminCompaniesView).ToString());
                 _regionManager.RequestNavigate(RegionNames.MenuRegion, typeof(AdminMenuView).ToString());
-            }else if (Id == AppRoles.Firma.ToString())
+            }else if (x.Role.Name == AppRoles.Firma.ToString())
             {
                 _moduleManager.LoadModule(typeof(CompanyModule).Name);
                 _regionManager.RequestNavigate(RegionNames.ContentRegion, typeof(CompanyDepartmentsView).ToString());
                 _regionManager.RequestNavigate(RegionNames.MenuRegion, typeof(CompanyMenuView).ToString());
-            }else if (Id == AppRoles.Student.ToString())
+            }else if (x.Role.Name == AppRoles.Student.ToString())
             {
                 _moduleManager.LoadModule(typeof(StudentModule).Name);
                 _regionManager.RequestNavigate(RegionNames.ContentRegion, typeof(StudentCompaniesView).ToString());

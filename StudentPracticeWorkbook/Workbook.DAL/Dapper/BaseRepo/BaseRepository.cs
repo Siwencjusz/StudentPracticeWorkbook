@@ -17,7 +17,7 @@ namespace Workbook.DAL.Dapper.BaseRepo
         {
             get
             {
-                return new SqlConnection(ConfigurationManager.ConnectionStrings["StudentWorkBook"].ConnectionString);
+                return new SqlConnection(ConfigurationManager.ConnectionStrings["StudenBook"].ConnectionString);
             }
         }
 
@@ -84,6 +84,10 @@ namespace Workbook.DAL.Dapper.BaseRepo
             using (IDbConnection cn = Connection)
             {
                 cn.Open();
+                var x=(object)result.Param;
+                SqlParameter param = new SqlParameter();
+                param.ParameterName = "@Login";
+                param.Value = "ads";
                 items = cn.Query<T>(result.Sql, (object)result.Param);
             }
 

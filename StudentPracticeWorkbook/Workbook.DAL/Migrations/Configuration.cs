@@ -66,6 +66,8 @@ namespace Workbook.DAL.Migrations
                 {
                     Id = new Guid(),
                     Login = "user",
+                    Name = "admin",
+                    LastName = "adm",
                     //user
                     HashPassword = "EE11CBB19052E40B07AAC0CA060C23EE",
                     Email = "userMail",

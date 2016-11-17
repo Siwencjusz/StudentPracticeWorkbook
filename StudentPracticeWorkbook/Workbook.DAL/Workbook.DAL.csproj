@@ -65,13 +65,9 @@
     <Compile Include="Dapper\Repos\RoleRepository.cs" />
     <Compile Include="Dapper\Repos\UserRepository.cs" />
     <Compile Include="Dapper\Repos\WorkBookRepository.cs" />
-    <Compile Include="Migrations\201611161125402_initial.cs" />
-    <Compile Include="Migrations\201611161125402_initial.Designer.cs">
-      <DependentUpon>201611161125402_initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201611161134040_Second.cs" />
-    <Compile Include="Migrations\201611161134040_Second.Designer.cs">
-      <DependentUpon>201611161134040_Second.cs</DependentUpon>
+    <Compile Include="Migrations\201611171114532_init.cs" />
+    <Compile Include="Migrations\201611171114532_init.Designer.cs">
+      <DependentUpon>201611171114532_init.cs</DependentUpon>
     </Compile>
     <Compile Include="StudentWorkBookContext.cs" />
     <Compile Include="Dapper\BaseRepo\BaseRepository.cs" />
@@ -99,11 +95,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201611161125402_initial.resx">
-      <DependentUpon>201611161125402_initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201611161134040_Second.resx">
-      <DependentUpon>201611161134040_Second.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201611171114532_init.resx">
+      <DependentUpon>201611171114532_init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
