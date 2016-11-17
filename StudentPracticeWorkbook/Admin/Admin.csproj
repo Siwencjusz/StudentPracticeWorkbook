@@ -90,8 +90,11 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="ViewModels\AdminCompaniesViewModel.cs" />
     <Compile Include="ViewModels\AdminDepartmentsViewModel.cs" />
     <Compile Include="ViewModels\AdminMenuViewModel.cs" />
+    <Compile Include="ViewModels\AdminStudentsViewModel.cs" />
+    <Compile Include="ViewModels\AdminWorkbooksViewModel.cs" />
     <Compile Include="Views\AdminCompaniesView.xaml.cs">
       <DependentUpon>AdminCompaniesView.xaml</DependentUpon>
     </Compile>
@@ -145,6 +148,10 @@
     <ProjectReference Include="..\ModulesCommons\ModulesCommons.csproj">
       <Project>{A9AED929-9D35-48E6-8983-C787E9AC7722}</Project>
       <Name>ModulesCommons</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Workbook.BLL\Workbook.BLL.csproj">
+      <Project>{7BDE8213-656A-4E9E-B250-FD389F58998C}</Project>
+      <Name>Workbook.BLL</Name>
     </ProjectReference>
     <ProjectReference Include="..\Workbook.Commons\Workbook.Commons.csproj">
       <Project>{854A2BE2-7A65-49B6-9E3B-5F169E9F5A03}</Project>

@@ -90,6 +90,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="ViewModels\CompanyAboutViewModel.cs" />
+    <Compile Include="ViewModels\CompanyDepartmentsViewModel.cs" />
+    <Compile Include="ViewModels\CompanyInternsViewModel.cs" />
     <Compile Include="ViewModels\CompanyMenuViewModel.cs" />
     <Compile Include="Views\CompanyAboutView.xaml.cs">
       <DependentUpon>CompanyAboutView.xaml</DependentUpon>
