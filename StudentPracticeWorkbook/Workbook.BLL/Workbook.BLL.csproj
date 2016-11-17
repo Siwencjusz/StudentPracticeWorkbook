@@ -49,7 +49,7 @@
     <Compile Include="Services\AuthorizeService.cs" />
     <Compile Include="Services\Base\BaseService.cs" />
     <Compile Include="Services\Base\IBaseService.cs" />
-    <Compile Include="Services\IAuthorizeServicecs.cs" />
+    <Compile Include="Services\IAuthorizeService.cs" />
     <Compile Include="Services\Serv\BookNoteService.cs" />
     <Compile Include="Services\Serv\DepartmentService.cs" />
     <Compile Include="Services\Interfaces\IDepartmentService.cs" />

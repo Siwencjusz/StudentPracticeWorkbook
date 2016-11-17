@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Workbook.DAL.Entities;
 namespace Workbook.BLL.Services
 {
-    public interface IAuthorizeServicecs
+    public interface IAuthorizeService
     {
         bool IsUserCredentialMatched(string login, string password);
         DAL.Entities.User GetAuthorizedUser(Guid Id);

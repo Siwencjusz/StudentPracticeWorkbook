@@ -11,6 +11,12 @@ using Main;
 using Prism.Modularity;
 using Student;
 using Supervisor;
+using User.BLL.Services.Serv;
+using Workbook.BLL.Services;
+using Workbook.BLL.Services.Interfaces;
+using Workbook.BLL.Services.Serv;
+using Workbook.DAL.Dapper.Interfaces;
+using Workbook.DAL.Dapper.Repos;
 
 namespace Workbook.Prism
 {
@@ -19,6 +25,17 @@ namespace Workbook.Prism
         protected override void ConfigureContainer()
         {
             base.ConfigureContainer();
+            Container.RegisterType<IBookNoteRepository, BookNoteRepository>(new ContainerControlledLifetimeManager());
+            Container.RegisterType<IDepartmentRepository, DepartmentRepository>(new ContainerControlledLifetimeManager());
+            Container.RegisterType<IRoleRepository, RoleRepository>(new ContainerControlledLifetimeManager());
+            Container.RegisterType<IUserRepository, UserRepository>(new ContainerControlledLifetimeManager());
+            Container.RegisterType<IWorkBookRepository, WorkBookRepository>(new ContainerControlledLifetimeManager());
+
+            Container.RegisterType<IUserService, UserService>(new ContainerControlledLifetimeManager());
+            Container.RegisterType<IRoleService, RoleService>(new ContainerControlledLifetimeManager());
+            Container.RegisterType<IDepartmentService, DepartmentService>(new ContainerControlledLifetimeManager());
+            Container.RegisterType<IAuthorizeService, AuthorizeService>(new ContainerControlledLifetimeManager());
+
 
         }
 

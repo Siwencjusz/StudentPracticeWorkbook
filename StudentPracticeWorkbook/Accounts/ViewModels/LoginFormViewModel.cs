@@ -16,7 +16,10 @@ using Student;
 using Student.Views;
 using Supervisor;
 using Supervisor.Views;
+using Workbook.BLL.Services;
+using Workbook.BLL.Services.Serv;
 using Workbook.Commons;
+using Workbook.DAL.Dapper.Repos;
 
 namespace Accounts.ViewModels
 {
@@ -25,12 +28,14 @@ namespace Accounts.ViewModels
         private readonly RegionManager _regionManager;
         private readonly LoggedUserService _loggedUserService;
         private readonly ModuleManager _moduleManager;
+        private readonly RoleService _authorizeService;
 
-        public LoginFormViewModel(RegionManager regionManager, LoggedUserService loggedUserService, ModuleManager moduleManager)
+        public LoginFormViewModel(RegionManager regionManager, LoggedUserService loggedUserService, ModuleManager moduleManager, RoleService authorizeService)
         {
             _regionManager = regionManager;
             _loggedUserService = loggedUserService;
             _moduleManager = moduleManager;
+            _authorizeService = authorizeService;
         }
 
         private string _id;
@@ -56,6 +61,8 @@ namespace Accounts.ViewModels
 
         private void OnLoginHit(object obj)
         {
+
+            
 
             if (Id == AppRoles.Opiekun.ToString())
             {

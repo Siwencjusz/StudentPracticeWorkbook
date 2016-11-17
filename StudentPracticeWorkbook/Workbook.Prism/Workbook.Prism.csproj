@@ -155,9 +155,17 @@
       <Project>{FB852654-C4FC-4AB3-8981-48E9F47090DB}</Project>
       <Name>Supervisor</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Workbook.BLL\Workbook.BLL.csproj">
+      <Project>{7BDE8213-656A-4E9E-B250-FD389F58998C}</Project>
+      <Name>Workbook.BLL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Workbook.Commons\Workbook.Commons.csproj">
       <Project>{854a2be2-7a65-49b6-9e3b-5f169e9f5a03}</Project>
       <Name>Workbook.Commons</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Workbook.DAL\Workbook.DAL.csproj">
+      <Project>{4EBDC7BF-2E8D-455D-A6B3-6CD902B76476}</Project>
+      <Name>Workbook.DAL</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

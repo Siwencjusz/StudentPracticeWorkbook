@@ -11,18 +11,18 @@ using Workbook.BLL.Services.Serv;
 
 namespace Workbook.BLL.Services
 {
-    public class AuthorizeService : IAuthorizeServicecs
+    public class AuthorizeService : IAuthorizeService
     {
-        public AuthorizeService(IUserService userService, IRoleService roleService, IDepartmentService departmentService)
+        public AuthorizeService(UserService userService, RoleService roleService, DepartmentService departmentService)
         {
             _userService = userService;
             _roleService = roleService;
             _departmentService = departmentService;
         }
 
-        private readonly IUserService _userService;
-        private readonly IRoleService _roleService;
-        private readonly IDepartmentService _departmentService;
+        private readonly UserService _userService;
+        private readonly RoleService _roleService;
+        private readonly DepartmentService _departmentService;
         private readonly MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider();
         public DAL.Entities.User GetAuthorizedUser(Guid Id)
         {
