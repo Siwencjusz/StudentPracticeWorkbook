@@ -8,6 +8,7 @@ using Workbook.DAL.Entities;
 using Workbook.BLL.Services.Interfaces;
 using User.BLL.Services.Serv;
 using Workbook.BLL.Services.Serv;
+using User = Workbook.DAL.Entities.User;
 
 namespace Workbook.BLL.Services
 {
@@ -24,26 +25,14 @@ namespace Workbook.BLL.Services
         private readonly RoleService _roleService;
         private readonly DepartmentService _departmentService;
         private readonly MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider();
-        public DAL.Entities.User GetAuthorizedUser(Guid Id)
-        {
-            var selectedUser = _userService.FindByID(Id);
-            if (selectedUser != null)
-            {
-                selectedUser.Role = _roleService.FindByID(selectedUser.RoleId.Value);
-                selectedUser.Department = _departmentService.FindByID(selectedUser.DepartmentId.Value);
-            }
-            return selectedUser;
-        }
-
-
-        public bool IsUserCredentialMatched(string login, string password)
+        public DAL.Entities.User GetAuthorizedUser(string login, string password)
         {
             string hashPassword;
-            var user = _userService.Find(x => x.Login == login).FirstOrDefault();
+            DAL.Entities.User user = _userService.Find(x => x.Login == login).FirstOrDefault();
             bool isUserExsist = user != null;
             if (!isUserExsist)
             {
-                return false;
+                return null;
             }
             using (System.IO.MemoryStream ms = new System.IO.MemoryStream(
             System.Text.Encoding.UTF32.GetBytes(password)))
@@ -53,13 +42,40 @@ namespace Workbook.BLL.Services
             bool isPasswordOk = user.HashPassword == hashPassword;
             if (!isPasswordOk)
             {
-                return false;
+                return null;
             }
             if (isUserExsist && isPasswordOk)
             {
-                return true;
+                return user;
             }
-            return false;
+            return null;
         }
+
+
+        //public bool IsUserCredentialMatched(string login, string password)
+        //{
+        //    string hashPassword;
+        //    var user = _userService.Find(x => x.Login == login).FirstOrDefault();
+        //    bool isUserExsist = user != null;
+        //    if (!isUserExsist)
+        //    {
+        //        return false;
+        //    }
+        //    using (System.IO.MemoryStream ms = new System.IO.MemoryStream(
+        //    System.Text.Encoding.UTF32.GetBytes(password)))
+        //    {
+        //        hashPassword = md5.ComputeHash(ms).ToString();
+        //    }
+        //    bool isPasswordOk = user.HashPassword == hashPassword;
+        //    if (!isPasswordOk)
+        //    {
+        //        return false;
+        //    }
+        //    if (isUserExsist && isPasswordOk)
+        //    {
+        //        return true;
+        //    }
+        //    return false;
+        //}
     }
 }

@@ -8,7 +8,7 @@ namespace Workbook.BLL.Services
 {
     public interface IAuthorizeService
     {
-        bool IsUserCredentialMatched(string login, string password);
-        DAL.Entities.User GetAuthorizedUser(Guid Id);
+        //bool IsUserCredentialMatched(string login, string password);
+        DAL.Entities.User GetAuthorizedUser(string login, string password);
     }
 }

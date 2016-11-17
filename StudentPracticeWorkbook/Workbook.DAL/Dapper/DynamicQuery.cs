@@ -108,7 +108,7 @@ namespace Workbook.DAL.Dapper.BaseRepo
                 string opr = GetOperator(body.NodeType);
                 string link = GetOperator(linkingType);
 
-                queryProperties.Add(new QueryParameter(link, propertyName, propertyValue.Value, opr));
+                queryProperties.Add(new QueryParameter(link, propertyName, propertyValue.Expression.Value, opr));
             }
             else
             {

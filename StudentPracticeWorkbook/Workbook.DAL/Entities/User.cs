@@ -11,6 +11,8 @@ namespace Workbook.DAL.Entities
 {
     public class User:EntityBase
     {
+        public string Name { get; set; }
+        public string LastName { get; set; }
         [Required]
         public string PhoneNumber { get; set; }
         [Required]

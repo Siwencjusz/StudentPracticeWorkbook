@@ -1,6 +1,8 @@
-﻿namespace Workbook.DAL.Dapper.Repos
+﻿using Workbook.DAL.Entities;
+
+namespace Workbook.DAL.Dapper.Repos
 {
-    public interface IWorkBookRepository
+    public interface IWorkBookRepository: IRepository<WorkBook>
     {
     }
 }

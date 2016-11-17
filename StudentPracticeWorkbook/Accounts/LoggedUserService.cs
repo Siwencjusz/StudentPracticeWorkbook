@@ -23,6 +23,12 @@ namespace Accounts
 
         private Workbook.DAL.Entities.User _activeUser = null;
 
+        public Workbook.DAL.Entities.User ActiveUser
+        {
+            get { return _activeUser; }
+            set { _activeUser = value; }
+        }
+
         public string LoggedUser
         {
             get
