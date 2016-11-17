@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Security.Cryptography;
 using Workbook.BLL.Services.Base;
 using Workbook.BLL.Services.Interfaces;
-using Workbook.DAL.Dapper.Interfaces;
-using Workbook.DAL.Dapper.Repos;
+using Workbook.DAL.EntityFramework;
 
 namespace User.BLL.Services.Serv
 {

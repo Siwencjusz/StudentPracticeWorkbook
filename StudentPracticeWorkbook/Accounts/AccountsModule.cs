@@ -8,8 +8,8 @@ using Microsoft.Practices.Unity;
 using User.BLL.Services.Serv;
 using Workbook.BLL.Services.Interfaces;
 using Workbook.Commons;
-using Workbook.DAL.Dapper.Interfaces;
-using Workbook.DAL.Dapper.Repos;
+using Workbook.DAL.EntityFramework;
+using Workbook.DAL.EntityFramework.Repositories;
 
 namespace Accounts
 {

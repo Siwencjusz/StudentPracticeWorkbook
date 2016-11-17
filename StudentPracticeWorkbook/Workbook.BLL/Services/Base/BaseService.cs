@@ -1,15 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
+using ProjectEstimator.DAL.Base.BaseRepository;
 using Workbook.DAL.Entities.baseEntity;
 
 namespace Workbook.BLL.Services.Base
 {
     public abstract class BaseService<T> : IBaseService<T> where T : EntityBase
     {
-        private readonly IRepository<T> _baseRepository;
+        private readonly IBaseRepository<T> _baseRepository;
 
-        public BaseService(IRepository<T> baseRepository)
+        public BaseService(IBaseRepository<T> baseRepository)
         {
             _baseRepository = baseRepository;
         }
@@ -20,27 +21,27 @@ namespace Workbook.BLL.Services.Base
 
         public virtual void Remove(T item)
         {
-            _baseRepository.Remove(item);
+            _baseRepository.Delete(item);
         }
 
         public virtual void Update(T item)
         {
-            _baseRepository.Update(item);
+            _baseRepository.Edit(item);
         }
 
         public virtual T FindByID(Guid id)
         {
-            return _baseRepository.FindByID(id);
+            return _baseRepository.FindById(id);
         }
 
         public virtual IEnumerable<T> Find(Expression<Func<T, bool>> predicate)
         {
-            return _baseRepository.Find(predicate);
+            return _baseRepository.GetBy(predicate);
         }
 
         public virtual IEnumerable<T> FindAll()
         {
-            return _baseRepository.FindAll();
+            return _baseRepository.GetAll();
         }
     }
 }

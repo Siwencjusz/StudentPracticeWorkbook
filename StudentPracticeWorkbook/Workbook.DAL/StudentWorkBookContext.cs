@@ -7,8 +7,12 @@ namespace Workbook.DAL
     public class StudentWorkBookContext : DbContext
     {
         public StudentWorkBookContext()
-            : base("StudenBook")
+            : base("StudentBook")
         {
+        }
+        public static StudentWorkBookContext Create()
+        {
+            return new StudentWorkBookContext();
         }
         public DbSet<Entities.WorkBook> WorkBooks { get; set; }
         public DbSet<Entities.Department> Departments { get; set; }
