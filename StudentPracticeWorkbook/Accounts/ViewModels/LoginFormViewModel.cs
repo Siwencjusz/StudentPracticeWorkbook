@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 using Accounts.Views;
 using Admin;
 using Admin.Views;
@@ -17,9 +12,7 @@ using Student.Views;
 using Supervisor;
 using Supervisor.Views;
 using Workbook.BLL.Services;
-using Workbook.BLL.Services.Serv;
 using Workbook.Commons;
-using Workbook.DAL.Dapper.Repos;
 
 namespace Accounts.ViewModels
 {

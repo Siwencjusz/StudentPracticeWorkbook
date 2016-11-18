@@ -55,26 +55,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Dapper\Interfaces\IDepartmentRepository.cs" />
-    <Compile Include="Dapper\Interfaces\IRoleRepository.cs" />
-    <Compile Include="Dapper\Interfaces\IUserRepository.cs" />
-    <Compile Include="Dapper\Interfaces\IWorkBookRepository.cs" />
-    <Compile Include="Dapper\Repos\BookNoteRepository.cs" />
-    <Compile Include="Dapper\Repos\DepartmentRepository.cs" />
-    <Compile Include="Dapper\Interfaces\IBookNoteRepository.cs" />
-    <Compile Include="Dapper\Repos\RoleRepository.cs" />
-    <Compile Include="Dapper\Repos\UserRepository.cs" />
-    <Compile Include="Dapper\Repos\WorkBookRepository.cs" />
-    <Compile Include="Migrations\201611171114532_init.cs" />
-    <Compile Include="Migrations\201611171114532_init.Designer.cs">
-      <DependentUpon>201611171114532_init.cs</DependentUpon>
+    <Compile Include="EntityFramework\baseRepository\BaseRepository.cs" />
+    <Compile Include="EntityFramework\baseRepository\IBaseRepository.cs" />
+    <Compile Include="EntityFramework\IRepositories\IBookNoteRepository.cs" />
+    <Compile Include="EntityFramework\IRepositories\IDepartmentRepository.cs" />
+    <Compile Include="EntityFramework\IRepositories\IRoleRepository.cs" />
+    <Compile Include="EntityFramework\IRepositories\IUserRepository.cs" />
+    <Compile Include="EntityFramework\IRepositories\IWorkBookRepository.cs" />
+    <Compile Include="EntityFramework\Repositories\BookRepository.cs" />
+    <Compile Include="EntityFramework\Repositories\DepartmentRepository.cs" />
+    <Compile Include="EntityFramework\Repositories\RoleRepository.cs" />
+    <Compile Include="EntityFramework\Repositories\UserRepository.cs" />
+    <Compile Include="EntityFramework\Repositories\WorkBookRepository.cs" />
+    <Compile Include="Migrations\201611171419453_init.cs" />
+    <Compile Include="Migrations\201611171419453_init.Designer.cs">
+      <DependentUpon>201611171419453_init.cs</DependentUpon>
     </Compile>
     <Compile Include="StudentWorkBookContext.cs" />
-    <Compile Include="Dapper\BaseRepo\BaseRepository.cs" />
-    <Compile Include="Dapper\QueryResult.cs" />
-    <Compile Include="Dapper\DynamicQuery.cs" />
-    <Compile Include="Dapper\DapperExtensions.cs" />
-    <Compile Include="Dapper\BaseRepo\IRepository.cs" />
     <Compile Include="Entities\baseEntity\EntityBase.cs" />
     <Compile Include="Entities\Department.cs" />
     <Compile Include="Entities\Role.cs" />
@@ -95,8 +92,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201611171114532_init.resx">
-      <DependentUpon>201611171114532_init.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201611171419453_init.resx">
+      <DependentUpon>201611171419453_init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

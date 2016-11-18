@@ -7,16 +7,18 @@ using System.Windows;
 using Accounts;
 using Admin;
 using Company;
-using Main;
 using Prism.Modularity;
+using ProjectEstimator.DAL.Entities.Roles;
+using ProjectEstimator.DAL.Repositories;
 using Student;
 using Supervisor;
 using User.BLL.Services.Serv;
 using Workbook.BLL.Services;
 using Workbook.BLL.Services.Interfaces;
 using Workbook.BLL.Services.Serv;
-using Workbook.DAL.Dapper.Interfaces;
-using Workbook.DAL.Dapper.Repos;
+using Workbook.DAL.EntityFramework;
+using Workbook.DAL.EntityFramework.baseRepository;
+using Workbook.DAL.EntityFramework.Repositories;
 
 namespace Workbook.Prism
 {
