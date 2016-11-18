@@ -29,16 +29,5 @@ namespace Accounts
             set { _activeUser = value; }
         }
 
-        public string LoggedUser
-        {
-            get
-            {
-                if (_activeUser != null)
-                {
-                    return _activeUser.Login;
-                }
-                return "Niezalogowany";
-            }
-        }
     }
 }

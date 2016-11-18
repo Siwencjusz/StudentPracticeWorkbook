@@ -5,6 +5,7 @@ using Admin.Views;
 using Company;
 using Company.Views;
 using Prism.Commands;
+using Prism.Events;
 using Prism.Modularity;
 using Prism.Regions;
 using Student;
@@ -13,6 +14,7 @@ using Supervisor;
 using Supervisor.Views;
 using Workbook.BLL.Services;
 using Workbook.Commons;
+using Workbook.Commons.Events;
 
 namespace Accounts.ViewModels
 {
@@ -22,13 +24,20 @@ namespace Accounts.ViewModels
         private readonly LoggedUserService _loggedUserService;
         private readonly ModuleManager _moduleManager;
         private readonly AuthorizeService _authorizeService;
+        private readonly EventAggregator _eventAggregator;
 
-        public LoginFormViewModel(RegionManager regionManager, LoggedUserService loggedUserService, ModuleManager moduleManager, AuthorizeService authorizeService)
+        public LoginFormViewModel(
+            RegionManager regionManager,
+            LoggedUserService loggedUserService,
+            ModuleManager moduleManager,
+            AuthorizeService authorizeService,
+            EventAggregator eventAggregator)
         {
             _regionManager = regionManager;
             _loggedUserService = loggedUserService;
             _moduleManager = moduleManager;
             _authorizeService = authorizeService;
+            _eventAggregator = eventAggregator;
         }
 
         private string _id;
@@ -94,6 +103,8 @@ namespace Accounts.ViewModels
             _regionManager.RequestNavigate(RegionNames.NavRegion, typeof(AccountToolbar).ToString());
 
             _loggedUserService.UserIsLogged = true;
+
+            _eventAggregator.GetEvent<LoginEvent>().Publish("");
         }
 
     }

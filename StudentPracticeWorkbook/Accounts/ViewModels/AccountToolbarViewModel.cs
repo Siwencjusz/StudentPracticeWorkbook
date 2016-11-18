@@ -11,6 +11,7 @@ using Accounts.Views;
 using Admin.Views;
 using Company;
 using Company.Views;
+using Prism.Events;
 using Prism.Modularity;
 using Prism.Regions;
 using Student;
@@ -18,6 +19,7 @@ using Student.Views;
 using Supervisor;
 using Supervisor.Views;
 using Workbook.Commons;
+using Workbook.Commons.Events;
 
 namespace Accounts.ViewModels
 {
@@ -26,19 +28,30 @@ namespace Accounts.ViewModels
         private readonly RegionManager _regionManager;
         private readonly LoggedUserService _loggedUserService;
         private readonly ModuleManager _moduleManager;
+        private readonly EventAggregator _eventAggregator;
 
-        public AccountToolbarViewModel(RegionManager regionManager, LoggedUserService loggedUserService, ModuleManager moduleManager)
+        public AccountToolbarViewModel(RegionManager regionManager, LoggedUserService loggedUserService, ModuleManager moduleManager, EventAggregator eventAggregator)
         {
             _regionManager = regionManager;
             _loggedUserService = loggedUserService;
             _moduleManager = moduleManager;
+            _eventAggregator = eventAggregator;
+
+            _eventAggregator.GetEvent<LoginEvent>().Subscribe(OnLogin);
+
         }
 
-
+        private void OnLogin(string s)
+        {
+            OnPropertyChanged("LoggedUser");
+        }
 
         public string LoggedUser
         {
-            get { return _loggedUserService.LoggedUser; }
+            get
+            {
+                    return _loggedUserService.ActiveUser.Name + " " + _loggedUserService.ActiveUser.LastName;
+            }
         }
         public bool UserIsLogged
         {

@@ -34,12 +34,19 @@ namespace Workbook.BLL.Services
             {
                 return null;
             }
-            using (System.IO.MemoryStream ms = new System.IO.MemoryStream(
-            System.Text.Encoding.UTF8.GetBytes(password)))
-            {
-                hashPassword = System.Text.Encoding.Default.GetString(md5.ComputeHash(ms));
-            }
-            bool isPasswordOk = (user.HashPassword == hashPassword);
+            //using (System.IO.MemoryStream ms = new System.IO.MemoryStream(
+            //System.Text.Encoding.UTF8.GetBytes(password)))
+            //{ 
+            //    hashPassword = System.Text.Encoding.Default.GetString(md5.ComputeHash(ms));
+            //}
+
+
+            var bytes = new UTF8Encoding().GetBytes(password);
+            var hashBytes = MD5.Create().ComputeHash(bytes);
+            hashPassword = Convert.ToBase64String(hashBytes);
+
+
+        bool isPasswordOk = (user.HashPassword == hashPassword);
             if (!isPasswordOk)
             {
                 return null;
