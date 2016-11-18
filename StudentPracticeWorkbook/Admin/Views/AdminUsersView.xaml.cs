@@ -3,11 +3,11 @@
 namespace Admin.Views
 {
     /// <summary>
-    /// Interaction logic for AdminCompaniesView
+    /// Interaction logic for AdminUsersView
     /// </summary>
-    public partial class AdminCompaniesView : UserControl
+    public partial class AdminUsersView : UserControl
     {
-        public AdminCompaniesView()
+        public AdminUsersView()
         {
             InitializeComponent();
         }

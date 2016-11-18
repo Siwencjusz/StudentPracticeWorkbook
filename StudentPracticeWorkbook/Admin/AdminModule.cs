@@ -20,9 +20,8 @@ namespace Admin
         public void Initialize()
         {
             _regionManager.RegisterViewWithRegion(RegionNames.MenuRegion, typeof(Views.AdminMenuView));
-            _regionManager.RegisterViewWithRegion(RegionNames.ContentRegion, typeof(Views.AdminCompaniesView));
+            _regionManager.RegisterViewWithRegion(RegionNames.ContentRegion, typeof(Views.AdminUsersView));
             _regionManager.RegisterViewWithRegion(RegionNames.ContentRegion, typeof(Views.AdminDepartmentsView));
-            _regionManager.RegisterViewWithRegion(RegionNames.ContentRegion, typeof(Views.AdminStudentsView));
             _regionManager.RegisterViewWithRegion(RegionNames.ContentRegion, typeof(Views.AdminWorkbooksView));
         }
     } 
