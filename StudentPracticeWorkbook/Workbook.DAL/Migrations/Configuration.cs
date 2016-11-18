@@ -69,7 +69,7 @@ namespace Workbook.DAL.Migrations
                     Name = "admin",
                     LastName = "adm",
                     //user
-                    HashPassword = "EE11CBB19052E40B07AAC0CA060C23EE",
+                    HashPassword = "7hHLsZBS5AsHqsDKBgwj7g==",
                     Email = "userMail",
                     PhoneNumber = "666",
                     RoleId = new Guid("AAE154BC-4F6B-4FDD-95D1-ECED015A4934"),

@@ -11,7 +11,7 @@ namespace Workbook.DAL.Migrations
                 "dbo.BookNotes",
                 c => new
                     {
-                        Id = c.Guid(nullable: false),
+                        Id = c.Guid(nullable: false, identity: true),
                         Note = c.String(),
                         StartDate = c.DateTime(nullable: false),
                         FinishDate = c.DateTime(nullable: false),
@@ -25,7 +25,7 @@ namespace Workbook.DAL.Migrations
                 "dbo.WorkBooks",
                 c => new
                     {
-                        Id = c.Guid(nullable: false),
+                        Id = c.Guid(nullable: false, identity: true),
                         DocumentUrl = c.String(),
                         CompanyId = c.Guid(),
                         EmployeeId = c.Guid(),
@@ -49,7 +49,7 @@ namespace Workbook.DAL.Migrations
                 "dbo.Users",
                 c => new
                     {
-                        Id = c.Guid(nullable: false),
+                        Id = c.Guid(nullable: false, identity: true),
                         Name = c.String(),
                         LastName = c.String(),
                         PhoneNumber = c.String(nullable: false),
@@ -70,7 +70,7 @@ namespace Workbook.DAL.Migrations
                 "dbo.Departments",
                 c => new
                     {
-                        Id = c.Guid(nullable: false),
+                        Id = c.Guid(nullable: false, identity: true),
                         Name = c.String(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
@@ -79,7 +79,7 @@ namespace Workbook.DAL.Migrations
                 "dbo.Roles",
                 c => new
                     {
-                        Id = c.Guid(nullable: false),
+                        Id = c.Guid(nullable: false, identity: true),
                         Name = c.String(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);

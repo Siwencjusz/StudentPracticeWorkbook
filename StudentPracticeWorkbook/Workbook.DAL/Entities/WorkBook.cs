@@ -22,5 +22,7 @@ namespace Workbook.DAL.Entities
         public virtual Department Department { get; set; }
         public Guid? DepartmentId { get; set; }
         public virtual List<BookNote> Noteses { get; set; }
+        public int? GradeCompany { get; set; }
+        public int? GradeDepartment { get; set; }
     }
 }

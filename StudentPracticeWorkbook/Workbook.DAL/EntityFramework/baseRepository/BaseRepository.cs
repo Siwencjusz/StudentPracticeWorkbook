@@ -41,6 +41,7 @@ namespace ProjectEstimator.DAL.Base.BaseRepository
 
         public virtual T Add(T entity)
         {
+            entity.Id = Guid.NewGuid();
             return _dbset.Add(entity);
         }
 

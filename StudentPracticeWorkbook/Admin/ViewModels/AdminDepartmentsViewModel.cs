@@ -18,22 +18,6 @@ namespace Admin.ViewModels
             _departmentService = departmentService;
 
             DepartmentsList = new ObservableCollection<Department>(_departmentService.FindAll());
-
-
-
-            DepartmentsList.Add(new Department()
-            {
-                Name = "dep1"
-            });
-            DepartmentsList.Add(new Department()
-            {
-                Name = "dep2"
-            });
-            DepartmentsList.Add(new Department()
-            {
-                Name = "dep3"
-            });
-
         }
 
         public ObservableCollection<Department> DepartmentsList { get; set; }

@@ -50,7 +50,11 @@ namespace Accounts.ViewModels
         {
             get
             {
+                if (UserIsLogged)
+                {
                     return _loggedUserService.ActiveUser.Name + " " + _loggedUserService.ActiveUser.LastName;
+                }
+                return string.Empty;
             }
         }
         public bool UserIsLogged
