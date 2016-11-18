@@ -3,9 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:prism="http://prismlibrary.com/"             
              prism:ViewModelLocator.AutoWireViewModel="True">
-    <StackPanel>
-        <Label Content="Student menu"></Label>
-        <Button Content="Dzienniki" Command="{Binding NavigationCommand}" CommandParameter="Student.Views.StudentWorkbooksView"></Button>
-        <Button Content="Firmy" Command="{Binding NavigationCommand}" CommandParameter="Student.Views.StudentCompaniesView"></Button>
-    </StackPanel>
+    <Border Margin="5" DockPanel.Dock="Right" BorderThickness="0.3" BorderBrush="DarkGray">
+        <StackPanel>
+            <Button Margin="5" Content="Dzienniki" Command="{Binding NavigationCommand}" CommandParameter="Student.Views.StudentWorkbooksView"></Button>
+            <Button Margin="5" Content="Firmy" Command="{Binding NavigationCommand}" CommandParameter="Student.Views.StudentCompaniesView"></Button>
+        </StackPanel>
+    </Border>
 </UserControl>

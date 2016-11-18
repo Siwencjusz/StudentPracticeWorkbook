@@ -3,16 +3,28 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:prism="http://prismlibrary.com/"             
              prism:ViewModelLocator.AutoWireViewModel="True">
-    <StackPanel>
-        <Label Margin="10" Content="StudentsView"></Label>
-        <ListView Height="300" ItemsSource="{Binding StudentsList}">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Label Grid.Column="0" Grid.Row="0" Margin="5" Content="Studenci"></Label>
+        <ListView Grid.Column="0" Grid.Row="1" Margin="5" ItemsSource="{Binding StudentsList}">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}"/>
+                    <GridViewColumn Header="Imię" DisplayMemberBinding="{Binding Name}"/>
+                    <GridViewColumn Header="Nazwisko" DisplayMemberBinding="{Binding LastName}"/>
+                    <GridViewColumn Header="Nazwisko" DisplayMemberBinding="{Binding Email}"/>
+                    <GridViewColumn Header="Nazwisko" DisplayMemberBinding="{Binding PhoneNumber}"/>
                 </GridView>
 
             </ListView.View>
         </ListView>
 
-    </StackPanel>
+    </Grid>
 </UserControl>
