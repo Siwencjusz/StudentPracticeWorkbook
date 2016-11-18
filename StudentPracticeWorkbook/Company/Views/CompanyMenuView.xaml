@@ -3,11 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:prism="http://prismlibrary.com/"             
              prism:ViewModelLocator.AutoWireViewModel="True">
-    <StackPanel>
-        <Button Content="Wydziały" Command="{Binding NavigationCommand}" CommandParameter="Company.Views.CompanyDepartmentsView"></Button>
-        <Button Content="Praktykanci" Command="{Binding NavigationCommand}" CommandParameter="Company.Views.CompanyInternsView"></Button>
-        <Button Content="Firma" Command="{Binding NavigationCommand}" CommandParameter="Company.Views.CompanyAboutView"></Button>
-    </StackPanel>
-            
+    <Border Margin="5" DockPanel.Dock="Right" BorderThickness="0.3" BorderBrush="DarkGray">
+        <StackPanel>
+            <Button Margin="5" Content="Wydziały" Command="{Binding NavigationCommand}" CommandParameter="Company.Views.CompanyDepartmentsView"></Button>
+            <Button Margin="5" Content="Praktykanci" Command="{Binding NavigationCommand}" CommandParameter="Company.Views.CompanyInternsView"></Button>
+            <Button Margin="5" Content="Firma" Command="{Binding NavigationCommand}" CommandParameter="Company.Views.CompanyAboutView"></Button>
+        </StackPanel>
+    </Border>
 </UserControl>
 

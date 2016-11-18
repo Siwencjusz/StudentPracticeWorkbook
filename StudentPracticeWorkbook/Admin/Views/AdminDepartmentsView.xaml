@@ -3,9 +3,18 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:prism="http://prismlibrary.com/"             
              prism:ViewModelLocator.AutoWireViewModel="True">
-    <StackPanel>
-            <Label Margin="10" Content="DepartmentsView"></Label>
-        <ListView Height="300" ItemsSource="{Binding DepartmentsList}">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Label Grid.Column="0" Grid.Row="0" Margin="5" Content="Wydziały"></Label>
+        <ListView Grid.Column="0" Grid.Row="1" Margin="5" ItemsSource="{Binding DepartmentsList}">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}"/>
@@ -14,5 +23,5 @@
             </ListView.View>
         </ListView>
 
-    </StackPanel>
+    </Grid>
 </UserControl>

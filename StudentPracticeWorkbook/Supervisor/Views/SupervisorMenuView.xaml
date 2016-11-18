@@ -3,11 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:prism="http://prismlibrary.com/"             
              prism:ViewModelLocator.AutoWireViewModel="True">
-    <StackPanel>
-        <Label Content="Supervisor menu"></Label>
-        <Button Content="Wydziały" Command="{Binding NavigationCommand}" CommandParameter="Supervisor.Views.SupervisorDepartmentsView"></Button>
-        <Button Content="Firmy" Command="{Binding NavigationCommand}" CommandParameter="Supervisor.Views.SupervisorCompaniesView"></Button>
-        <Button Content="Dzienniki" Command="{Binding NavigationCommand}" CommandParameter="Supervisor.Views.SupervisorWorkbooksView"></Button>
-        <Button Content="Studenci" Command="{Binding NavigationCommand}" CommandParameter="Supervisor.Views.SupervisorStudentsView"></Button>
-    </StackPanel>
+    <Border Margin="5" DockPanel.Dock="Right" BorderThickness="0.3" BorderBrush="DarkGray">
+        <StackPanel>
+            <Button Margin="5" Content="Wydziały" Command="{Binding NavigationCommand}" CommandParameter="Supervisor.Views.SupervisorDepartmentsView"></Button>
+            <Button Margin="5" Content="Firmy" Command="{Binding NavigationCommand}" CommandParameter="Supervisor.Views.SupervisorCompaniesView"></Button>
+            <Button Margin="5" Content="Dzienniki" Command="{Binding NavigationCommand}" CommandParameter="Supervisor.Views.SupervisorWorkbooksView"></Button>
+            <Button Margin="5" Content="Studenci" Command="{Binding NavigationCommand}" CommandParameter="Supervisor.Views.SupervisorStudentsView"></Button>
+        </StackPanel>
+    </Border>
 </UserControl>

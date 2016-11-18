@@ -7,13 +7,18 @@
         xmlns:commons="clr-namespace:Workbook.Commons;assembly=Workbook.Commons">
 
     <DockPanel>
-        <DockPanel DockPanel.Dock="Top">
-            <Label DockPanel.Dock="Left" Content="{x:Static commons:Strings.AppName}"></Label>
-            <ContentControl DockPanel.Dock="Right" prism:RegionManager.RegionName="NavRegion"/>
-        </DockPanel>
+
+        <Border Margin="5" DockPanel.Dock="Top" BorderThickness="0.3" BorderBrush="DarkGray">
+            <DockPanel >
+                <Label Margin="5" DockPanel.Dock="Left" Content="{x:Static commons:Strings.AppName}"></Label>
+                <ContentControl Margin="5" DockPanel.Dock="Right" prism:RegionManager.RegionName="NavRegion"/>
+            </DockPanel>
+        </Border>
         
-        <ContentControl DockPanel.Dock="Left" prism:RegionManager.RegionName="MenuRegion" />
-        <ContentControl DockPanel.Dock="Right" prism:RegionManager.RegionName="ContentRegion" />
-        
+        <ContentControl prism:RegionManager.RegionName="MenuRegion" />
+
+        <Border  Margin="5" DockPanel.Dock="Right" BorderThickness="0.3" BorderBrush="DarkGray">
+                <ContentControl prism:RegionManager.RegionName="ContentRegion" />
+        </Border>
     </DockPanel>
 </Window>

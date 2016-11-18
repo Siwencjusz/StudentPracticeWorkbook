@@ -4,6 +4,26 @@
              xmlns:prism="http://prismlibrary.com/"             
              prism:ViewModelLocator.AutoWireViewModel="True">
     <Grid>
-            <Label Content="workbooks"></Label>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Label Grid.Column="0" Grid.Row="0" Margin="5" Content="Dzienniki"></Label>
+        <ListView Grid.Column="0" Grid.Row="1" Margin="5" ItemsSource="{Binding WorkbooksList}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Wydział" DisplayMemberBinding="{Binding Department.Name}"/>
+                    <GridViewColumn Header="Student" DisplayMemberBinding="{Binding Student.LastName}"/>
+                    <GridViewColumn Header="Firma" DisplayMemberBinding="{Binding Company.Name}"/>
+                    <GridViewColumn Header="Ocena" DisplayMemberBinding="{Binding Grade}"/>
+                </GridView>
+
+            </ListView.View>
+        </ListView>
     </Grid>
 </UserControl>
