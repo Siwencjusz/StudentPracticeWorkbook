@@ -11,7 +11,7 @@ namespace Workbook.DAL.Migrations
                 "dbo.BookNotes",
                 c => new
                     {
-                        Id = c.Guid(nullable: false, identity: true),
+                        Id = c.Guid(nullable: false),
                         Note = c.String(),
                         StartDate = c.DateTime(nullable: false),
                         FinishDate = c.DateTime(nullable: false),
@@ -25,12 +25,14 @@ namespace Workbook.DAL.Migrations
                 "dbo.WorkBooks",
                 c => new
                     {
-                        Id = c.Guid(nullable: false, identity: true),
+                        Id = c.Guid(nullable: false),
                         DocumentUrl = c.String(),
                         CompanyId = c.Guid(),
                         EmployeeId = c.Guid(),
                         StudentId = c.Guid(),
                         DepartmentId = c.Guid(),
+                        GradeCompany = c.Int(),
+                        GradeDepartment = c.Int(),
                         User_Id = c.Guid(),
                     })
                 .PrimaryKey(t => t.Id)
@@ -49,7 +51,7 @@ namespace Workbook.DAL.Migrations
                 "dbo.Users",
                 c => new
                     {
-                        Id = c.Guid(nullable: false, identity: true),
+                        Id = c.Guid(nullable: false),
                         Name = c.String(),
                         LastName = c.String(),
                         PhoneNumber = c.String(nullable: false),
@@ -70,7 +72,7 @@ namespace Workbook.DAL.Migrations
                 "dbo.Departments",
                 c => new
                     {
-                        Id = c.Guid(nullable: false, identity: true),
+                        Id = c.Guid(nullable: false),
                         Name = c.String(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
@@ -79,7 +81,7 @@ namespace Workbook.DAL.Migrations
                 "dbo.Roles",
                 c => new
                     {
-                        Id = c.Guid(nullable: false, identity: true),
+                        Id = c.Guid(nullable: false),
                         Name = c.String(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
