@@ -14,13 +14,12 @@ namespace User.BLL.Services.Serv
     public sealed class UserService : BaseService<Workbook.DAL.Entities.User>, IUserService
     {
         private readonly IUserRepository _baseRepository;
-        private readonly IMailService _imailService;
         private readonly MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider();
+        private SmtpClient _smtpClient;
 
-        public UserService(IUserRepository baseRepository, IMailService imailService) : base(baseRepository)
+        public UserService(IUserRepository baseRepository) : base(baseRepository)
         {
             _baseRepository = baseRepository;
-            _imailService = imailService;
         }
 
         public override void Add(Workbook.DAL.Entities.User item)
@@ -43,12 +42,12 @@ namespace User.BLL.Services.Serv
             MailMessage _mail = new MailMessage();
             _mail.Subject = subject;
             _mail.Body = body;
-            var _sender = ConfigurationManager.AppSettings["from"].ToString();
-            var smtpServer = ConfigurationManager.AppSettings["smtp_server"].ToString();
-            var smtpPort = int.Parse(ConfigurationManager.AppSettings["smtp_port"]);
-            var smtpUser = ConfigurationManager.AppSettings["smtp_user"].ToString();
-            var smtpPassword = ConfigurationManager.AppSettings["smtp_password"].ToString();
-            var _smtpClient = new SmtpClient(smtpServer, smtpPort);
+            var _sender = "StudentWorkBookService@gmail.com";
+            var smtpServer = "smtp.gmail.com";
+            var smtpPort = 587;
+            var smtpUser = "StudentWorkBookService@gmail.com";
+            var smtpPassword = "3edc$RFV";
+            _smtpClient = new SmtpClient(smtpServer, smtpPort);
             _smtpClient.EnableSsl = true;
 
             NetworkCredential credential = new NetworkCredential(smtpUser, smtpPassword);
