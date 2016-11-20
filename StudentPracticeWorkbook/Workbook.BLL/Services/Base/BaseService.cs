@@ -17,16 +17,19 @@ namespace Workbook.BLL.Services.Base
         public virtual void Add(T item)
         {
             _baseRepository.Add(item);
+            _baseRepository.Save();
         }
 
         public virtual void Remove(T item)
         {
             _baseRepository.Delete(item);
+            _baseRepository.Save();
         }
 
         public virtual void Update(T item)
         {
             _baseRepository.Edit(item);
+            _baseRepository.Save();
         }
 
         public virtual T FindByID(Guid id)

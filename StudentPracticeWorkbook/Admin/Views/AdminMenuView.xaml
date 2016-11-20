@@ -7,9 +7,8 @@
     <Border Margin="5" DockPanel.Dock="Right" BorderThickness="0.3" BorderBrush="DarkGray">
         <StackPanel>
             <Button Margin="5" Width="75" Content="Wydziały" Command="{Binding NavigationCommand}" CommandParameter="Admin.Views.AdminDepartmentsView"/>
-            <Button Margin="5" Width="75" Content="Firmy" Command="{Binding NavigationCommand}" CommandParameter="Admin.Views.AdminCompaniesView"/>
             <Button Margin="5" Width="75" Content="Dzienniki" Command="{Binding NavigationCommand}" CommandParameter="Admin.Views.AdminWorkbooksView"/>
-            <Button Margin="5" Width="75" Content="Studenci" Command="{Binding NavigationCommand}" CommandParameter="Admin.Views.AdminStudentsView"/>
+            <Button Margin="5" Width="75" Content="Użytkownicy" Command="{Binding NavigationCommand}" CommandParameter="Admin.Views.AdminUsersView"/>
         </StackPanel>
     </Border>
 </UserControl>

@@ -20,7 +20,7 @@
                     <GridViewColumn Header="Wydział" DisplayMemberBinding="{Binding Department.Name}"/>
                     <GridViewColumn Header="Student" DisplayMemberBinding="{Binding Student.LastName}"/>
                     <GridViewColumn Header="Firma" DisplayMemberBinding="{Binding Company.Name}"/>
-                    <GridViewColumn Header="Ocena" DisplayMemberBinding="{Binding Grade}"/>
+                    <GridViewColumn Header="Ocena" DisplayMemberBinding="{Binding GradeCompany}"/>
                 </GridView>
 
             </ListView.View>

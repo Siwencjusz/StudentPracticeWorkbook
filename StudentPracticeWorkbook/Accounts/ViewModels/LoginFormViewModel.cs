@@ -81,7 +81,7 @@ namespace Accounts.ViewModels
             }else if (x.Role.Name == AppRoles.Admin.ToString())
             {
                 _moduleManager.LoadModule(typeof(AdminModule).Name);
-                _regionManager.RequestNavigate(RegionNames.ContentRegion, typeof(AdminCompaniesView).ToString());
+                _regionManager.RequestNavigate(RegionNames.ContentRegion, typeof(AdminUsersView).ToString());
                 _regionManager.RequestNavigate(RegionNames.MenuRegion, typeof(AdminMenuView).ToString());
             }else if (x.Role.Name == AppRoles.Firma.ToString())
             {

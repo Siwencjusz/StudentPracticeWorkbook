@@ -21,14 +21,19 @@ namespace Workbook.DAL.Entities
         public string HashPassword { get; set; }
         [Required]
         public string Email { get; set; }
+
         public string DetailInformation { get; set; }
+
         [ForeignKey("DepartmentId")]
         public virtual Department Department { get; set; }
 
         public Guid? DepartmentId { get; set; }
+
         [ForeignKey("RoleId")]
         public virtual Role Role { get; set; }
+
         public Guid? RoleId { get; set; }
+
         public virtual List<WorkBook> WorkBooks { get; set; }
     }
 }
