@@ -35,5 +35,7 @@ namespace Workbook.DAL.Entities
         public Guid? RoleId { get; set; }
 
         public virtual List<WorkBook> WorkBooks { get; set; }
+
+        public string FullName => Name + " " + LastName;
     }
 }

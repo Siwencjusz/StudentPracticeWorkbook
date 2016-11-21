@@ -7,22 +7,42 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
         <Label Grid.Column="0" Grid.Row="0" Margin="5" Content="Dzienniki"></Label>
-        <ListView Grid.Column="0" Grid.Row="1" Margin="5" ItemsSource="{Binding CompaniesList}">
+        <ListView Grid.Column="0" Grid.Row="1" Margin="5" ItemsSource="{Binding WorkbooksList}" SelectedItem="{Binding SelectedWorkBook}">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}"/>
-                    <GridViewColumn Header="Nr. Telefonu" DisplayMemberBinding="{Binding PhoneNumber}"/>
-                    <GridViewColumn Header="Email" DisplayMemberBinding="{Binding Email}"/>
+                    <GridViewColumn Header="Wydział" DisplayMemberBinding="{Binding Department.Name}"/>
+                    <GridViewColumn Header="Firma" DisplayMemberBinding="{Binding Company.Name}"/>
+                    <GridViewColumn Header="Ocena" DisplayMemberBinding="{Binding GradeCompany}"/>
                 </GridView>
 
             </ListView.View>
         </ListView>
+
+        <ListView Grid.Column="1" Grid.Row="1" Margin="5" ItemsSource="{Binding SelectedWorkBook.Noteses}" SelectedItem="{Binding SelectedBookNote}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Data rozpoczęcia" DisplayMemberBinding="{Binding StartDate}"/>
+                    <GridViewColumn Header="Data zakończenia" DisplayMemberBinding="{Binding FinishDate}"/>
+                </GridView>
+
+            </ListView.View>
+        </ListView>
+
+        <Button Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" Content="Dodaj notę" Command="{Binding AddNoteCommand}"/>
+        <Button Grid.Column="1" Grid.Row="2" HorizontalAlignment="Right" Content="Usuń zaznaczoną" Command="{Binding RemoveNoteCommand}"/>
+
+        <TextBox Grid.Column="2" Grid.Row="1" Margin="5" Text="{Binding SelectedBookNote.Note, Mode=TwoWay}" TextWrapping="Wrap"/>
+        <Button Grid.Column="2" Grid.Row="2" HorizontalAlignment="Right" Content="Zapisz" Command="{Binding SaveNoteCommand}"/>
     </Grid>
+
+
 </UserControl>

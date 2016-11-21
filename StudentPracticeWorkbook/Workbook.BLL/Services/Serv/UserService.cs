@@ -7,6 +7,8 @@ using System.Web.Security;
 using LaboratoryHandbook.Services;
 using Workbook.BLL.Services.Base;
 using Workbook.BLL.Services.Interfaces;
+using Workbook.BLL.Services.Serv;
+using Workbook.DAL.Entities;
 using Workbook.DAL.EntityFramework;
 
 namespace User.BLL.Services.Serv
@@ -14,12 +16,14 @@ namespace User.BLL.Services.Serv
     public sealed class UserService : BaseService<Workbook.DAL.Entities.User>, IUserService
     {
         private readonly IUserRepository _baseRepository;
+        private readonly IRoleService _roleService;
         private readonly MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider();
         private SmtpClient _smtpClient;
 
-        public UserService(IUserRepository baseRepository) : base(baseRepository)
+        public UserService(IUserRepository baseRepository, IRoleService roleService) : base(baseRepository)
         {
             _baseRepository = baseRepository;
+            _roleService = roleService;
         }
 
         public override void Add(Workbook.DAL.Entities.User item)
@@ -78,5 +82,24 @@ namespace User.BLL.Services.Serv
             }
         }
 
+
+        public override void Update(Workbook.DAL.Entities.User item)
+        {
+            Role x = null;
+            if (item.Role != null)
+            {
+                x = _roleService.FindByID(item.Role.Id);
+            }
+            
+            item.Role = null;
+
+            if (x != null)
+            {
+                item.RoleId = x.Id;
+            }
+            
+            
+            _baseRepository.Edit(item);
+        }
     }
 }

@@ -4,7 +4,10 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows.Input;
+using User.BLL.Services.Serv;
 using Workbook.BLL.Services.Serv;
+using Workbook.Commons;
 using Workbook.DAL.Entities;
 
 namespace Admin.ViewModels
@@ -12,13 +15,82 @@ namespace Admin.ViewModels
     public class AdminWorkbooksViewModel : BindableBase
     {
         private readonly WorkBookService _workBookService;
+        private readonly UserService _userService;
+        private readonly DepartmentService _departmentService;
 
-        public AdminWorkbooksViewModel(WorkBookService workBookService)
+        public AdminWorkbooksViewModel(
+            WorkBookService workBookService,
+            UserService userService,
+            DepartmentService departmentService
+            )
         {
             _workBookService = workBookService;
+            _userService = userService;
+            _departmentService = departmentService;
+
             WorkbooksList = new ObservableCollection<WorkBook>(_workBookService.FindAll());
+            StudentsList = new ObservableCollection<Workbook.DAL.Entities.User>(_userService.Find(x=>x.Role.Name == AppRoles.Student.ToString()));
+            SupervisorsList = new ObservableCollection<Workbook.DAL.Entities.User>(_userService.Find(x => x.Role.Name == AppRoles.Opiekun.ToString()));
+            CompaniesList = new ObservableCollection<Workbook.DAL.Entities.User>(_userService.Find(x => x.Role.Name == AppRoles.Firma.ToString()));
+            DepartmentsList = new ObservableCollection<Department>(_departmentService.FindAll());
+
+            if (WorkbooksList.Any())
+            {
+                SelectedWorkBook = WorkbooksList.First();
+            }
+
+            SaveSelectedItem = new DelegateCommand<object>(SaveSelected, (x) => true);
+            RemoveSelectedItem = new DelegateCommand<object>(RemoveSelected, (x) => true);
+            AddNewItem = new DelegateCommand<object>(AddNew, (x) => true);
+        }
+
+        private WorkBook _selectedWorkBook;
+        public WorkBook SelectedWorkBook
+        {
+            get
+            {
+                return _selectedWorkBook;
+            }
+            set
+            {
+                _selectedWorkBook = value;
+                OnPropertyChanged();
+            }
         }
 
         public ObservableCollection<WorkBook> WorkbooksList { get; set; }
+        public ObservableCollection<Workbook.DAL.Entities.User> StudentsList { get; set; }
+        public ObservableCollection<Workbook.DAL.Entities.User> SupervisorsList { get; set; }
+        public ObservableCollection<Workbook.DAL.Entities.User> CompaniesList { get; set; }
+        public ObservableCollection<Department> DepartmentsList { get; set; }
+
+        public ICommand AddNewItem { get; }
+        public ICommand SaveSelectedItem { get; }
+        public ICommand RemoveSelectedItem { get; }
+
+        private void AddNew(object obj)
+        {
+            SelectedWorkBook = new WorkBook();
+        }
+        private void SaveSelected(object obj)
+        {
+
+            if (_selectedWorkBook.Id == Guid.Empty)
+            {
+                _workBookService.Add(_selectedWorkBook);
+                WorkbooksList.Add(_selectedWorkBook);
+            }
+            else
+            {
+                _workBookService.Update(_selectedWorkBook);
+            }
+
+        }
+        private void RemoveSelected(object obj)
+        {
+            _workBookService.Remove(_selectedWorkBook);
+            WorkbooksList.Remove(_selectedWorkBook);
+            _selectedWorkBook = null;
+        }
     }
 }
