@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows.Input;
 using Workbook.BLL.Services.Serv;
 using Workbook.DAL.Entities;
 
@@ -18,9 +19,57 @@ namespace Admin.ViewModels
             _departmentService = departmentService;
 
             DepartmentsList = new ObservableCollection<Department>(_departmentService.FindAll());
+
+            if (DepartmentsList.Any())
+            {
+                SelectedDepartment = DepartmentsList.First();
+            }
+
+            SaveSelectedItem = new DelegateCommand<object>(SaveSelected, (x) => true);
+            RemoveSelectedItem = new DelegateCommand<object>(RemoveSelected, (x) => true);
+            AddNewItem = new DelegateCommand<object>(AddNew, (x) => true);
         }
 
         public ObservableCollection<Department> DepartmentsList { get; set; }
 
+        private Department _selectedDepartment;
+        public Department SelectedDepartment
+        {
+            get { return _selectedDepartment; }
+            set
+            {
+                _selectedDepartment = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public ICommand AddNewItem { get; }
+        public ICommand SaveSelectedItem { get; }
+        public ICommand RemoveSelectedItem { get; }
+
+        private void AddNew(object obj)
+        {
+            SelectedDepartment = new Department();
+        }
+        private void SaveSelected(object obj)
+        {
+
+            if (_selectedDepartment.Id == Guid.Empty)
+            {
+                _departmentService.Add(_selectedDepartment);
+                DepartmentsList.Add(_selectedDepartment);
+            }
+            else
+            {
+                _departmentService.Update(_selectedDepartment);
+            }
+
+        }
+        private void RemoveSelected(object obj)
+        {
+            _departmentService.Remove(_selectedDepartment);
+            DepartmentsList.Remove(_selectedDepartment);
+            _selectedDepartment = null;
+        }
     }
 }

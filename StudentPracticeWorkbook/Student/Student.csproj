@@ -119,9 +119,17 @@
       <Project>{A9AED929-9D35-48E6-8983-C787E9AC7722}</Project>
       <Name>ModulesCommons</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Workbook.BLL\Workbook.BLL.csproj">
+      <Project>{7BDE8213-656A-4E9E-B250-FD389F58998C}</Project>
+      <Name>Workbook.BLL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Workbook.Commons\Workbook.Commons.csproj">
       <Project>{854A2BE2-7A65-49B6-9E3B-5F169E9F5A03}</Project>
       <Name>Workbook.Commons</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Workbook.DAL\Workbook.DAL.csproj">
+      <Project>{4EBDC7BF-2E8D-455D-A6B3-6CD902B76476}</Project>
+      <Name>Workbook.DAL</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
