@@ -6,22 +6,22 @@ using Workbook.DAL.Entities.baseEntity;
 
 namespace Workbook.DAL.Entities
 {
-    public class WorkBook:EntityBase
+    public class Workbook:EntityBase
     {
         public string DocumentUrl { get; set; }
 
         [ForeignKey("CompanyId")]
-        public virtual User Company { get; set; }
+        public virtual Company Company { get; set; }
 
         public Guid? CompanyId { get; set; }
 
         [ForeignKey("EmployeeId")]
-        public virtual User Employee { get; set; }
+        public virtual Employee Employee { get; set; }
 
         public Guid? EmployeeId { get; set; }
 
         [ForeignKey("StudentId")]
-        public virtual User Student { get; set; }
+        public virtual Student Student { get; set; }
 
         public Guid? StudentId { get; set; }
 

@@ -4,7 +4,7 @@ using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Input;
-using User.BLL.Services.Serv;
+using Workbook.BLL.DTOs;
 using Workbook.BLL.Services.Serv;
 using Workbook.DAL.Entities;
 
@@ -20,8 +20,8 @@ namespace Admin.ViewModels
             _userService = userService;
             _roleService = roleService;
 
-            UsersList = new ObservableCollection<Workbook.DAL.Entities.User>(_userService.FindAll());
-            Roles = new ObservableCollection<Role>(_roleService.FindAll());
+            UsersList = new ObservableCollection<UserDTO>(_userService.FindAll());
+            Roles = new ObservableCollection<RoleDTO>(_roleService.FindAll());
 
             if (UsersList.Any())
             {
@@ -33,12 +33,12 @@ namespace Admin.ViewModels
             AddNewItem = new DelegateCommand<object>(AddNew, (x) => true);
         }
 
-        public ObservableCollection<Workbook.DAL.Entities.User> UsersList { get; set; }
-        public ObservableCollection<Role> Roles { get; set; }
+        public ObservableCollection<UserDTO> UsersList { get; set; }
+        public ObservableCollection<RoleDTO> Roles { get; set; }
 
 
-        private Workbook.DAL.Entities.User _selectedUser;
-        public Workbook.DAL.Entities.User SelectedUser
+        private UserDTO _selectedUser;
+        public UserDTO SelectedUser
         {
             get
             {
@@ -62,7 +62,7 @@ namespace Admin.ViewModels
 
         private void AddNew(object obj)
         {
-            SelectedUser = new Workbook.DAL.Entities.User();
+            SelectedUser = new UserDTO();
         }
         private void SaveSelected(object obj)
         {

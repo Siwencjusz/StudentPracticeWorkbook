@@ -17,11 +17,8 @@ namespace Workbook.DAL.Migrations
 
         protected override void Seed(Workbook.DAL.StudentWorkBookContext context)
         {
-            //  This method will be called after migrating to the latest version.
 
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data. E.g.
-            //
+            #region roles
             Role[] roles = new[]
             {
                 new Role
@@ -46,18 +43,13 @@ namespace Workbook.DAL.Migrations
                 }
             };
             context.Roles.AddOrUpdate(roles);
-            //context.Roles.AddOrUpdate(
-            //    new Role()
-            //    {
-            //        Id= new Guid("AAE154BC-4F6B-4FDD-95D1-ECED015A4934"),
-            //        Name = "Admin"
-            //    }
-            //);
+            #endregion
+            #region departments
             Department[] departments = new[]
             {
                 new Department()
                 {
-                    Id = new Guid("AAE154BC-4F6B-4FDD-95D1-ECED015A4934"),
+                    Id = Guid.NewGuid(),
                     Name = "Admin"
                 },
                 new Department()
@@ -73,12 +65,14 @@ namespace Workbook.DAL.Migrations
                 new Department()
                 {
                     Id = Guid.NewGuid(),
-                    Name = "Rakologia"
+                    Name = "WNE"
                 }
             };
             context.Departments.AddOrUpdate(
                 departments
             );
+            #endregion
+            #region users
             User[] users = new[]
             {
 
@@ -93,9 +87,9 @@ namespace Workbook.DAL.Migrations
                     Email = "userMail",
                     PhoneNumber = "666",
                     RoleId = roles[0].Id,
-                    DepartmentId = new Guid("AAE154BC-4F6B-4FDD-95D1-ECED015A4934")
+                    DepartmentId = departments[0].Id
                 },
-                new User()
+                new Student()
                 {
                     Id = Guid.NewGuid(),
                     Login = "user1",
@@ -108,7 +102,7 @@ namespace Workbook.DAL.Migrations
                     RoleId = roles[3].Id,
                     DepartmentId = departments[1].Id
                 },
-                new User()
+                new Company()
                 {
                     Id = Guid.NewGuid(),
                     Login = "user2",
@@ -121,7 +115,7 @@ namespace Workbook.DAL.Migrations
                     RoleId = roles[1].Id,
                     DepartmentId = departments[1].Id
                 },
-                new User()
+                new Employee()
                 {
                     Id = Guid.NewGuid(),
                     Login = "user3",
@@ -134,64 +128,30 @@ namespace Workbook.DAL.Migrations
                     RoleId = roles[2].Id,
                     DepartmentId = departments[1].Id
                 }
-                ,new User()
-                {
-                    Id = Guid.NewGuid(),
-                    Login = "stud",
-                    Name = "stud",
-                    LastName = "adm",
-                    //user
-                    HashPassword = "7hHLsZBS5AsHqsDKBgwj7g==",
-                    Email = "userMail",
-                    PhoneNumber = "666",
-                    RoleId = roles[3].Id,
-                    DepartmentId = departments[2].Id
-                },new User()
-                {
-                    Id = Guid.NewGuid(),
-                    Login = "firma",
-                    Name = "firma",
-                    LastName = "adm",
-                    //user
-                    HashPassword = "7hHLsZBS5AsHqsDKBgwj7g==",
-                    Email = "userMail",
-                    PhoneNumber = "666",
-                    RoleId = roles[1].Id,
-                    DepartmentId = departments[2].Id
-                },new User()
-                {
-                    Id = Guid.NewGuid(),
-                    Login = "prowadzacy",
-                    Name = "prowadzacy",
-                    LastName = "adm",
-                    //user
-                    HashPassword = "7hHLsZBS5AsHqsDKBgwj7g==",
-                    Email = "userMail",
-                    PhoneNumber = "666",
-                    RoleId = roles[2].Id,
-                    DepartmentId = departments[2].Id
-                }
             };
             context.Users.AddOrUpdate(users
             );
-            WorkBook[] workBooks = new[]
+            #endregion
+            #region workBooks
+            Entities.Workbook[] workBooks = new[]
                 {
-                new WorkBook()
+                new Entities.Workbook()
                 {
                     Id = Guid.NewGuid(),
-                    CompanyId = users[5].Id,
+                    CompanyId = users[1].Id,
                     DepartmentId = departments[2].Id,
-                    EmployeeId = users.LastOrDefault().Id
+                    EmployeeId = users[3].Id
                   },
-                new WorkBook()
+                new Entities.Workbook()
                 {
                     Id = Guid.NewGuid(),
-                    CompanyId = users[3].Id,
+                    CompanyId = users[1].Id,
                     DepartmentId = departments[1].Id,
-                    EmployeeId = users[4].Id
+                    EmployeeId = users[3].Id
                   }
                 };
             context.WorkBooks.AddOrUpdate(workBooks);
+            #endregion
         }
     }
 }

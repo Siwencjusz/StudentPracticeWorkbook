@@ -4,7 +4,9 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using User.BLL.Services.Serv;
+
+using Workbook.BLL.DTOs;
+using Workbook.BLL.Services.Serv;
 
 namespace Company.ViewModels
 {
@@ -15,9 +17,9 @@ namespace Company.ViewModels
         public CompanyInternsViewModel(UserService userService)
         {
             _userService = userService;
-            InternsList = new ObservableCollection<Workbook.DAL.Entities.User>(_userService.FindAll());
+            InternsList = new ObservableCollection<UserDTO>(_userService.FindAll());
         }
 
-        private ObservableCollection<Workbook.DAL.Entities.User> InternsList { get; set; }
+        private ObservableCollection<UserDTO> InternsList { get; set; }
     }
 }

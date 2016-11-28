@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Input;
+using Workbook.BLL.DTOs;
 using Workbook.BLL.Services.Serv;
 using Workbook.BLL.Services.Serv.Workbook.BLL.Services.Serv;
 using Workbook.DAL.Entities;
@@ -21,7 +22,7 @@ namespace Student.ViewModels
             _workBookService = workBookService;
             _bookNoteService = bookNoteService;
 
-            WorkbooksList = new ObservableCollection<WorkBook>(_workBookService.FindAll());
+            WorkbooksList = new ObservableCollection<WorkbookDTO>(_workBookService.FindAll());
 
             AddNoteCommand = new DelegateCommand<object>(AddNote, (x) => true);
             RemoveNoteCommand = new DelegateCommand<object>(RemoveNote, (x) => true);
@@ -48,15 +49,14 @@ namespace Student.ViewModels
 
         private void AddNote(object obj)
         {
-            SelectedBookNote = new BookNote();
-            SelectedBookNote.WorkBook = SelectedWorkBook;
-            SelectedBookNote.WorkBookId = SelectedWorkBook.Id;
+            SelectedBookNote = new BookNoteDTO();
+            SelectedBookNote.Workbook = SelectedWorkBook;
         }
 
-        public ObservableCollection<WorkBook> WorkbooksList { get; set; }
+        public ObservableCollection<WorkbookDTO> WorkbooksList { get; set; }
 
-        private WorkBook _selectedWorkBook;
-        public WorkBook SelectedWorkBook
+        private WorkbookDTO _selectedWorkBook;
+        public WorkbookDTO SelectedWorkBook
         {
             get { return _selectedWorkBook; }
             set
@@ -70,8 +70,8 @@ namespace Student.ViewModels
         public ICommand RemoveNoteCommand { get; }
         public ICommand SaveNoteCommand { get; }
 
-        private BookNote _selectedBookNote;
-        public BookNote SelectedBookNote
+        private BookNoteDTO _selectedBookNote;
+        public BookNoteDTO SelectedBookNote
         {
             get { return _selectedBookNote; }
             set

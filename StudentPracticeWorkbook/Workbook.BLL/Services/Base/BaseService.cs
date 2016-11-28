@@ -1,50 +1,57 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
+using AutoMapper;
 using ProjectEstimator.DAL.Base.BaseRepository;
+using Workbook.BLL.DTOs;
 using Workbook.DAL.Entities.baseEntity;
 
 namespace Workbook.BLL.Services.Base
 {
-    public abstract class BaseService<T> : IBaseService<T> where T : EntityBase
+    public abstract class BaseService<TEntity, Tdto> : IBaseService<TEntity, Tdto> 
+        where TEntity : EntityBase
+        where Tdto : BaseDTO
     {
-        private readonly IBaseRepository<T> _baseRepository;
+        private readonly IBaseRepository<TEntity> _baseRepository;
 
-        public BaseService(IBaseRepository<T> baseRepository)
+        public BaseService(IBaseRepository<TEntity> baseRepository)
         {
             _baseRepository = baseRepository;
         }
-        public virtual void Add(T item)
+        public virtual void Add(Tdto item)
         {
-            _baseRepository.Add(item);
+            _baseRepository.Add(Mapper.Map<TEntity>(item));
             _baseRepository.Save();
         }
 
-        public virtual void Remove(T item)
+        public virtual void Remove(Tdto item)
         {
-            _baseRepository.Delete(item);
+            TEntity entityToDelete = _baseRepository.FindById(item.Id);
+            _baseRepository.Delete(entityToDelete);
             _baseRepository.Save();
         }
 
-        public virtual void Update(T item)
+        public virtual void Update(Tdto item)
         {
-            _baseRepository.Edit(item);
+            _baseRepository.Edit(Mapper.Map<TEntity>(item));
             _baseRepository.Save();
         }
 
-        public virtual T FindByID(Guid id)
+        public virtual Tdto FindByID(Guid id)
         {
-            return _baseRepository.FindById(id);
+               return Mapper.Map<Tdto>(_baseRepository.FindById(id));
         }
 
-        public virtual IEnumerable<T> Find(Expression<Func<T, bool>> predicate)
+        public virtual IEnumerable<Tdto>Find(Func<Tdto, bool> predicate)
         {
-            return _baseRepository.GetBy(predicate);
+            List<Tdto> x = Mapper.Map<List<Tdto>>(_baseRepository.GetAll());
+            return x.Where(predicate).AsEnumerable();
         }
 
-        public virtual IEnumerable<T> FindAll()
+        public virtual IEnumerable<Tdto> FindAll()
         {
-            return _baseRepository.GetAll();
+            return Mapper.Map<List<Tdto>>(_baseRepository.GetAll());
         }
     }
 }

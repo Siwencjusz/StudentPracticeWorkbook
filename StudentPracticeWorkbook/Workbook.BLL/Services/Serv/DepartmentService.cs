@@ -1,10 +1,11 @@
-﻿using Workbook.BLL.Services.Base;
+﻿using Workbook.BLL.DTOs;
+using Workbook.BLL.Services.Base;
 using Workbook.DAL.Entities;
 using Workbook.DAL.EntityFramework.baseRepository;
 
 namespace Workbook.BLL.Services.Serv
 {
-    public sealed class DepartmentService : BaseService<Department>, IDepartmentService
+    public sealed class DepartmentService : BaseService<Department, DepartmentDTO>, IDepartmentService
     {
         private readonly IDepartmentRepository _baseRepository;
 

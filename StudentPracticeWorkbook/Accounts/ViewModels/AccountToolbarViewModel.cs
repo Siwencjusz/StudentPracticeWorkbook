@@ -52,7 +52,7 @@ namespace Accounts.ViewModels
             {
                 if (UserIsLogged)
                 {
-                    return _loggedUserService.ActiveUser.Name + " " + _loggedUserService.ActiveUser.LastName;
+                    return _loggedUserService.ActiveUser.Name + " " + _loggedUserService.ActiveUser.FullName;
                 }
                 return string.Empty;
             }

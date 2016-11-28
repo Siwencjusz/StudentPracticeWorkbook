@@ -13,16 +13,16 @@ namespace Workbook.DAL.Migrations
                     {
                         Id = c.Guid(nullable: false),
                         Note = c.String(),
-                        StartDate = c.DateTime(nullable: false),
-                        FinishDate = c.DateTime(nullable: false),
+                        StartDate = c.DateTime(),
+                        FinishDate = c.DateTime(),
                         WorkBookId = c.Guid(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.WorkBooks", t => t.WorkBookId, cascadeDelete: true)
+                .ForeignKey("dbo.Workbooks", t => t.WorkBookId, cascadeDelete: true)
                 .Index(t => t.WorkBookId);
             
             CreateTable(
-                "dbo.WorkBooks",
+                "dbo.Workbooks",
                 c => new
                     {
                         Id = c.Guid(nullable: false),
@@ -33,19 +33,16 @@ namespace Workbook.DAL.Migrations
                         DepartmentId = c.Guid(),
                         GradeCompany = c.Int(),
                         GradeDepartment = c.Int(),
-                        User_Id = c.Guid(),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Users", t => t.User_Id)
-                .ForeignKey("dbo.Users", t => t.CompanyId)
-                .ForeignKey("dbo.Departments", t => t.DepartmentId)
                 .ForeignKey("dbo.Users", t => t.EmployeeId)
                 .ForeignKey("dbo.Users", t => t.StudentId)
+                .ForeignKey("dbo.Users", t => t.CompanyId)
+                .ForeignKey("dbo.Departments", t => t.DepartmentId)
                 .Index(t => t.CompanyId)
                 .Index(t => t.EmployeeId)
                 .Index(t => t.StudentId)
-                .Index(t => t.DepartmentId)
-                .Index(t => t.User_Id);
+                .Index(t => t.DepartmentId);
             
             CreateTable(
                 "dbo.Users",
@@ -61,6 +58,7 @@ namespace Workbook.DAL.Migrations
                         DetailInformation = c.String(),
                         DepartmentId = c.Guid(),
                         RoleId = c.Guid(),
+                        Discriminator = c.String(nullable: false, maxLength: 128),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Departments", t => t.DepartmentId)
@@ -90,26 +88,24 @@ namespace Workbook.DAL.Migrations
         
         public override void Down()
         {
-            DropForeignKey("dbo.BookNotes", "WorkBookId", "dbo.WorkBooks");
-            DropForeignKey("dbo.WorkBooks", "StudentId", "dbo.Users");
-            DropForeignKey("dbo.WorkBooks", "EmployeeId", "dbo.Users");
-            DropForeignKey("dbo.WorkBooks", "DepartmentId", "dbo.Departments");
-            DropForeignKey("dbo.WorkBooks", "CompanyId", "dbo.Users");
-            DropForeignKey("dbo.WorkBooks", "User_Id", "dbo.Users");
+            DropForeignKey("dbo.BookNotes", "WorkBookId", "dbo.Workbooks");
+            DropForeignKey("dbo.Workbooks", "DepartmentId", "dbo.Departments");
+            DropForeignKey("dbo.Workbooks", "CompanyId", "dbo.Users");
+            DropForeignKey("dbo.Workbooks", "StudentId", "dbo.Users");
+            DropForeignKey("dbo.Workbooks", "EmployeeId", "dbo.Users");
             DropForeignKey("dbo.Users", "RoleId", "dbo.Roles");
             DropForeignKey("dbo.Users", "DepartmentId", "dbo.Departments");
             DropIndex("dbo.Users", new[] { "RoleId" });
             DropIndex("dbo.Users", new[] { "DepartmentId" });
-            DropIndex("dbo.WorkBooks", new[] { "User_Id" });
-            DropIndex("dbo.WorkBooks", new[] { "DepartmentId" });
-            DropIndex("dbo.WorkBooks", new[] { "StudentId" });
-            DropIndex("dbo.WorkBooks", new[] { "EmployeeId" });
-            DropIndex("dbo.WorkBooks", new[] { "CompanyId" });
+            DropIndex("dbo.Workbooks", new[] { "DepartmentId" });
+            DropIndex("dbo.Workbooks", new[] { "StudentId" });
+            DropIndex("dbo.Workbooks", new[] { "EmployeeId" });
+            DropIndex("dbo.Workbooks", new[] { "CompanyId" });
             DropIndex("dbo.BookNotes", new[] { "WorkBookId" });
             DropTable("dbo.Roles");
             DropTable("dbo.Departments");
             DropTable("dbo.Users");
-            DropTable("dbo.WorkBooks");
+            DropTable("dbo.Workbooks");
             DropTable("dbo.BookNotes");
         }
     }

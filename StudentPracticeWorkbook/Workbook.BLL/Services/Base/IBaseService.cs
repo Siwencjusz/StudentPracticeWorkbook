@@ -1,17 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
+using Workbook.BLL.DTOs;
 using Workbook.DAL.Entities.baseEntity;
 
 namespace Workbook.BLL.Services.Base
 {
-    public interface IBaseService<T> where T : EntityBase
+    public interface IBaseService<TEntity, Tdto> 
+        where TEntity : EntityBase
+        where Tdto : BaseDTO
     {
-        void Add(T item);
-        void Remove(T item);
-        void Update(T item);
-        T FindByID(Guid id);
-        IEnumerable<T> Find(Expression<Func<T, bool>> predicate);
-        IEnumerable<T> FindAll();
+        void Add(Tdto item);
+        void Remove(Tdto item);
+        void Update(Tdto item);
+        Tdto FindByID(Guid id);
+        IEnumerable<Tdto> Find(Func<Tdto, bool> predicate);
+        IEnumerable<Tdto> FindAll();
     }
 }

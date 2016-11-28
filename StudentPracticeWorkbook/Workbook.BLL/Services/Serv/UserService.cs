@@ -4,16 +4,19 @@ using System.Net;
 using System.Net.Mail;
 using System.Security.Cryptography;
 using System.Web.Security;
+using AutoMapper;
 using LaboratoryHandbook.Services;
+using Workbook.BLL.DTOs;
 using Workbook.BLL.Services.Base;
 using Workbook.BLL.Services.Interfaces;
 using Workbook.BLL.Services.Serv;
+using Workbook.Commons;
 using Workbook.DAL.Entities;
 using Workbook.DAL.EntityFramework;
 
-namespace User.BLL.Services.Serv
+namespace Workbook.BLL.Services.Serv
 {
-    public sealed class UserService : BaseService<Workbook.DAL.Entities.User>, IUserService
+    public sealed class UserService : BaseService<User, UserDTO>, IUserService
     {
         private readonly IUserRepository _baseRepository;
         private readonly IRoleService _roleService;
@@ -26,7 +29,7 @@ namespace User.BLL.Services.Serv
             _roleService = roleService;
         }
 
-        public override void Add(Workbook.DAL.Entities.User item)
+        public override void Add(UserDTO item)
         {
             var password= Membership.GeneratePassword(6, 3) + "Zaq1@";
             item.HashPassword = password;
@@ -38,9 +41,19 @@ namespace User.BLL.Services.Serv
 
             var subject = "Twoje konto W do dziennika praktyk";
             var body = "Twoje Tymczasowe hasło to: " + password;
-            SendEmail(item.Email, subject, body);
-            _baseRepository.Add(item);
+            //SendEmail(item.Email, subject, body);
+
+
+            switch (item.Role.Name)
+            {
+                case "Student": _baseRepository.Add(Mapper.Map<Student>(item)); break;
+                case "Admin": _baseRepository.Add(Mapper.Map<User>(item)); break;
+                case "Firma": _baseRepository.Add(Mapper.Map<Company>(item)); break;
+                case "Opiekun": _baseRepository.Add(Mapper.Map<Employee>(item)); break;
+            }
+            
         }
+
         private bool SendEmail(string email, string subject, string body)
         {
             MailMessage _mail = new MailMessage();
@@ -83,23 +96,25 @@ namespace User.BLL.Services.Serv
         }
 
 
-        public override void Update(Workbook.DAL.Entities.User item)
+        public override void Update(UserDTO item)
         {
-            Role x = null;
-            if (item.Role != null)
-            {
-                x = _roleService.FindByID(item.Role.Id);
-            }
-            
-            item.Role = null;
 
-            if (x != null)
-            {
-                item.RoleId = x.Id;
-            }
+            throw new NotImplementedException();
+            //Role x = null;
+            //if (item.Role != null)
+            //{
+            //    x = _roleService.FindByID(item.Role.Id);
+            //}
+            
+            //item.Role = null;
+
+            //if (x != null)
+            //{
+            //    item.RoleId = x.Id;
+            //}
             
             
-            _baseRepository.Edit(item);
+            //_baseRepository.Edit(item);
         }
     }
 }

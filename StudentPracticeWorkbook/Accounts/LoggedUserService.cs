@@ -4,8 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Practices.Unity;
-using User.BLL.Services.Serv;
+
+using Workbook.BLL.DTOs;
 using Workbook.BLL.Services.Interfaces;
+using Workbook.BLL.Services.Serv;
 using Workbook.DAL.Entities;
 
 namespace Accounts
@@ -21,9 +23,9 @@ namespace Accounts
 
         public bool UserIsLogged = false;
 
-        private Workbook.DAL.Entities.User _activeUser = null;
+        private UserDTO _activeUser = null;
 
-        public Workbook.DAL.Entities.User ActiveUser
+        public UserDTO ActiveUser
         {
             get { return _activeUser; }
             set { _activeUser = value; }

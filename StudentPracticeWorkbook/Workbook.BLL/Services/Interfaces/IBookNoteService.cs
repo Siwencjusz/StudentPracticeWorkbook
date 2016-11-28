@@ -1,8 +1,10 @@
-﻿using Workbook.BLL.Services.Base;
+﻿using Workbook.BLL.DTOs;
+using Workbook.BLL.Services.Base;
+using Workbook.DAL.Entities;
 
 namespace Workbook.BLL.Services.Interfaces
 {
-    public interface IBookNoteService:IBaseService<Workbook.DAL.Entities.BookNote>
+    public interface IBookNoteService:IBaseService<BookNote, BookNoteDTO>
     {
     }
 }

@@ -1,8 +1,9 @@
-﻿using Workbook.BLL.Services.Base;
+﻿using Workbook.BLL.DTOs;
+using Workbook.BLL.Services.Base;
 
 namespace Workbook.BLL.Services.Interfaces
 {
-    public interface IUserService: IBaseService<Workbook.DAL.Entities.User>
+    public interface IUserService: IBaseService<DAL.Entities.User, UserDTO>
     {
     }
 }
