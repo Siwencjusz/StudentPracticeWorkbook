@@ -35,10 +35,10 @@ namespace Workbook.DAL.Migrations
                         GradeDepartment = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Users", t => t.CompanyId, cascadeDelete: true)
+                .ForeignKey("dbo.Departments", t => t.DepartmentId)
                 .ForeignKey("dbo.Users", t => t.EmployeeId)
                 .ForeignKey("dbo.Users", t => t.StudentId)
-                .ForeignKey("dbo.Users", t => t.CompanyId)
-                .ForeignKey("dbo.Departments", t => t.DepartmentId)
                 .Index(t => t.CompanyId)
                 .Index(t => t.EmployeeId)
                 .Index(t => t.StudentId)
@@ -89,10 +89,10 @@ namespace Workbook.DAL.Migrations
         public override void Down()
         {
             DropForeignKey("dbo.BookNotes", "WorkBookId", "dbo.Workbooks");
-            DropForeignKey("dbo.Workbooks", "DepartmentId", "dbo.Departments");
-            DropForeignKey("dbo.Workbooks", "CompanyId", "dbo.Users");
             DropForeignKey("dbo.Workbooks", "StudentId", "dbo.Users");
             DropForeignKey("dbo.Workbooks", "EmployeeId", "dbo.Users");
+            DropForeignKey("dbo.Workbooks", "DepartmentId", "dbo.Departments");
+            DropForeignKey("dbo.Workbooks", "CompanyId", "dbo.Users");
             DropForeignKey("dbo.Users", "RoleId", "dbo.Roles");
             DropForeignKey("dbo.Users", "DepartmentId", "dbo.Departments");
             DropIndex("dbo.Users", new[] { "RoleId" });

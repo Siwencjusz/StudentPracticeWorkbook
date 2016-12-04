@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Configuration;
+using System.Linq;
 using System.Net;
 using System.Net.Mail;
 using System.Security.Cryptography;
 using System.Web.Security;
 using AutoMapper;
 using LaboratoryHandbook.Services;
+using ProjectEstimator.DAL.Entities.Roles;
 using Workbook.BLL.DTOs;
 using Workbook.BLL.Services.Base;
 using Workbook.BLL.Services.Interfaces;
@@ -19,11 +21,11 @@ namespace Workbook.BLL.Services.Serv
     public sealed class UserService : BaseService<User, UserDTO>, IUserService
     {
         private readonly IUserRepository _baseRepository;
-        private readonly IRoleService _roleService;
+        private readonly IRoleRepository _roleService;
         private readonly MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider();
         private SmtpClient _smtpClient;
 
-        public UserService(IUserRepository baseRepository, IRoleService roleService) : base(baseRepository)
+        public UserService(IUserRepository baseRepository, IRoleRepository roleService) : base(baseRepository)
         {
             _baseRepository = baseRepository;
             _roleService = roleService;
@@ -43,15 +45,40 @@ namespace Workbook.BLL.Services.Serv
             var body = "Twoje Tymczasowe hasło to: " + password;
             //SendEmail(item.Email, subject, body);
 
-
+            item.Login = item.Email;
+            User user=null;
+            Role role=null;
             switch (item.Role.Name)
             {
-                case "Student": _baseRepository.Add(Mapper.Map<Student>(item)); break;
-                case "Admin": _baseRepository.Add(Mapper.Map<User>(item)); break;
-                case "Firma": _baseRepository.Add(Mapper.Map<Company>(item)); break;
-                case "Opiekun": _baseRepository.Add(Mapper.Map<Employee>(item)); break;
+                case "Student":
+                    user = Mapper.Map<Student>(item);
+                    role = _roleService.FindById(user.RoleId.Value);
+                    user.Role = role;
+                    user.RoleId = role.Id;
+                    //user.Role = null;
+                    //user.RoleId = null;
+                    _baseRepository.Add(user); break;
+                case "Admin":
+                    user = Mapper.Map<User>(item);
+                    role = _roleService.FindById(user.RoleId.Value);
+                    user.Role = role;
+                    user.RoleId = role.Id;
+                    _baseRepository.Add(user); break;
+                case "Firma":
+                    user = Mapper.Map<Company>(item);
+                    role = _roleService.FindById(user.RoleId.Value);
+                    user.Role = role;
+                    user.RoleId = role.Id;
+                    _baseRepository.Add(user); break;
+                case "Opiekun":
+                    user = Mapper.Map<Employee>(item);
+                    role = _roleService.FindById(user.RoleId.Value);
+                    user.Role = role;
+                    user.RoleId = role.Id;
+                    _baseRepository.Add(user); break;
             }
-            
+            _baseRepository.Save();
+
         }
 
         private bool SendEmail(string email, string subject, string body)
@@ -96,25 +123,32 @@ namespace Workbook.BLL.Services.Serv
         }
 
 
-        public override void Update(UserDTO item)
-        {
+        //public override void Remove(UserDTO item)
+        //{
+        //    var toDelete = _baseRepository.GetBy(x=>x.Id==item.Id).FirstOrDefault();
+        //    _baseRepository.Delete(toDelete);
+        //    _baseRepository.Save();
+        //}
 
-            throw new NotImplementedException();
-            //Role x = null;
-            //if (item.Role != null)
-            //{
-            //    x = _roleService.FindByID(item.Role.Id);
-            //}
-            
-            //item.Role = null;
+        //public override void Update(UserDTO item)
+        //{
 
-            //if (x != null)
-            //{
-            //    item.RoleId = x.Id;
-            //}
+        //    throw new NotImplementedException();
+        //    //Role x = null;
+        //    //if (item.Role != null)
+        //    //{
+        //    //    x = _roleService.FindByID(item.Role.Id);
+        //    //}
+            
+        //    //item.Role = null;
+
+        //    //if (x != null)
+        //    //{
+        //    //    item.RoleId = x.Id;
+        //    //}
             
             
-            //_baseRepository.Edit(item);
-        }
+        //    //_baseRepository.Edit(item);
+        //}
     }
 }
