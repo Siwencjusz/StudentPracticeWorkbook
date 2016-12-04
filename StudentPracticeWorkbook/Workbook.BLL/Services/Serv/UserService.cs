@@ -33,13 +33,14 @@ namespace User.BLL.Services.Serv
             using (System.IO.MemoryStream ms = new System.IO.MemoryStream(
             System.Text.Encoding.UTF32.GetBytes(item.HashPassword)))
             {
-                item.HashPassword = md5.ComputeHash(ms).ToString();
             }
 
             var subject = "Twoje konto W do dziennika praktyk";
             var body = "Twoje Tymczasowe hasło to: " + password;
-            SendEmail(item.Email, subject, body);
+           
             _baseRepository.Add(item);
+            _baseRepository.Save();
+            SendEmail(item.Email, subject, body);
         }
         private bool SendEmail(string email, string subject, string body)
         {
@@ -100,6 +101,7 @@ namespace User.BLL.Services.Serv
             
             
             _baseRepository.Edit(item);
+            _baseRepository.Save();
         }
     }
 }
