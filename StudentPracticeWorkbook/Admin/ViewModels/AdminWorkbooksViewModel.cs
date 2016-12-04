@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Input;
-using User.BLL.Services.Serv;
+using Workbook.BLL.DTOs;
 using Workbook.BLL.Services.Serv;
 using Workbook.Commons;
 using Workbook.DAL.Entities;
@@ -28,11 +28,11 @@ namespace Admin.ViewModels
             _userService = userService;
             _departmentService = departmentService;
 
-            WorkbooksList = new ObservableCollection<WorkBook>(_workBookService.FindAll());
-            StudentsList = new ObservableCollection<Workbook.DAL.Entities.User>(_userService.Find(x=>x.Role.Name == AppRoles.Student.ToString()));
-            SupervisorsList = new ObservableCollection<Workbook.DAL.Entities.User>(_userService.Find(x => x.Role.Name == AppRoles.Opiekun.ToString()));
-            CompaniesList = new ObservableCollection<Workbook.DAL.Entities.User>(_userService.Find(x => x.Role.Name == AppRoles.Firma.ToString()));
-            DepartmentsList = new ObservableCollection<Department>(_departmentService.FindAll());
+            WorkbooksList = new ObservableCollection<WorkbookDTO>(_workBookService.FindAll());
+            StudentsList = new ObservableCollection<UserDTO>(_userService.Find(x=>x.Role.Name == AppRoles.Student.ToString()));
+            SupervisorsList = new ObservableCollection<UserDTO>(_userService.Find(x => x.Role.Name == AppRoles.Opiekun.ToString()));
+            CompaniesList = new ObservableCollection<UserDTO>(_userService.Find(x => x.Role.Name == AppRoles.Firma.ToString()));
+            DepartmentsList = new ObservableCollection<DepartmentDTO>(_departmentService.FindAll());
 
             if (WorkbooksList.Any())
             {
@@ -44,8 +44,8 @@ namespace Admin.ViewModels
             AddNewItem = new DelegateCommand<object>(AddNew, (x) => true);
         }
 
-        private WorkBook _selectedWorkBook;
-        public WorkBook SelectedWorkBook
+        private WorkbookDTO _selectedWorkBook;
+        public WorkbookDTO SelectedWorkBook
         {
             get
             {
@@ -58,11 +58,11 @@ namespace Admin.ViewModels
             }
         }
 
-        public ObservableCollection<WorkBook> WorkbooksList { get; set; }
-        public ObservableCollection<Workbook.DAL.Entities.User> StudentsList { get; set; }
-        public ObservableCollection<Workbook.DAL.Entities.User> SupervisorsList { get; set; }
-        public ObservableCollection<Workbook.DAL.Entities.User> CompaniesList { get; set; }
-        public ObservableCollection<Department> DepartmentsList { get; set; }
+        public ObservableCollection<WorkbookDTO> WorkbooksList { get; set; }
+        public ObservableCollection<UserDTO> StudentsList { get; set; }
+        public ObservableCollection<UserDTO> SupervisorsList { get; set; }
+        public ObservableCollection<UserDTO> CompaniesList { get; set; }
+        public ObservableCollection<DepartmentDTO> DepartmentsList { get; set; }
 
         public ICommand AddNewItem { get; }
         public ICommand SaveSelectedItem { get; }
@@ -70,7 +70,7 @@ namespace Admin.ViewModels
 
         private void AddNew(object obj)
         {
-            SelectedWorkBook = new WorkBook();
+            SelectedWorkBook = new WorkbookDTO();
         }
         private void SaveSelected(object obj)
         {

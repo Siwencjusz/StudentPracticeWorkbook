@@ -14,7 +14,7 @@ namespace Workbook.DAL
         {
             return new StudentWorkBookContext();
         }
-        public DbSet<Entities.WorkBook> WorkBooks { get; set; }
+        public DbSet<Entities.Workbook> WorkBooks { get; set; }
         public DbSet<Entities.Department> Departments { get; set; }
         public DbSet<Entities.Role> Roles { get; set; }
         public DbSet<Entities.User> Users { get; set; }

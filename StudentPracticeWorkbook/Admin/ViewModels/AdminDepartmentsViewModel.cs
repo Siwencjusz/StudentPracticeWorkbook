@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Input;
+using Workbook.BLL.DTOs;
 using Workbook.BLL.Services.Serv;
 using Workbook.DAL.Entities;
 
@@ -18,7 +19,7 @@ namespace Admin.ViewModels
         {
             _departmentService = departmentService;
 
-            DepartmentsList = new ObservableCollection<Department>(_departmentService.FindAll());
+            DepartmentsList = new ObservableCollection<DepartmentDTO>(_departmentService.FindAll());
 
             if (DepartmentsList.Any())
             {
@@ -30,10 +31,10 @@ namespace Admin.ViewModels
             AddNewItem = new DelegateCommand<object>(AddNew, (x) => true);
         }
 
-        public ObservableCollection<Department> DepartmentsList { get; set; }
+        public ObservableCollection<DepartmentDTO> DepartmentsList { get; set; }
 
-        private Department _selectedDepartment;
-        public Department SelectedDepartment
+        private DepartmentDTO _selectedDepartment;
+        public DepartmentDTO SelectedDepartment
         {
             get { return _selectedDepartment; }
             set
@@ -49,7 +50,7 @@ namespace Admin.ViewModels
 
         private void AddNew(object obj)
         {
-            SelectedDepartment = new Department();
+            SelectedDepartment = new DepartmentDTO();
         }
         private void SaveSelected(object obj)
         {

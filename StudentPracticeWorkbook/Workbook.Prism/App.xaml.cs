@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using Workbook.BLL.init;
 
 namespace Workbook.Prism
 {
@@ -16,6 +17,8 @@ namespace Workbook.Prism
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
+
+            InitBLL.InitMapper();
 
             var bootstrapper = new Bootstrapper();
             bootstrapper.Run();

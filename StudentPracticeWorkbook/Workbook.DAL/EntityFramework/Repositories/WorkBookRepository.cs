@@ -8,7 +8,7 @@ using Workbook.DAL.Entities;
 
 namespace Workbook.DAL.EntityFramework.Repositories
 {
-    public class WorkBookRepository : BaseRepository<WorkBook>, IWorkBookRepository
+    public class WorkBookRepository : BaseRepository<Entities.Workbook>, IWorkBookRepository
     {
         public WorkBookRepository(StudentWorkBookContext context) : base(context)
         {

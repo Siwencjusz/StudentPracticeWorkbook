@@ -8,7 +8,7 @@ using Workbook.DAL.Entities;
 
 namespace Workbook.DAL.EntityFramework
 {
-    public interface IWorkBookRepository : IBaseRepository<WorkBook>
+    public interface IWorkBookRepository : IBaseRepository<Entities.Workbook>
     {
     }
 }

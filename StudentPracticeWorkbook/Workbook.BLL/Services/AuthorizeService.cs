@@ -6,9 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Workbook.DAL.Entities;
 using Workbook.BLL.Services.Interfaces;
-using User.BLL.Services.Serv;
+using Workbook.BLL.DTOs;
 using Workbook.BLL.Services.Serv;
-using User = Workbook.DAL.Entities.User;
 
 namespace Workbook.BLL.Services
 {
@@ -25,28 +24,22 @@ namespace Workbook.BLL.Services
         private readonly RoleService _roleService;
         private readonly DepartmentService _departmentService;
         private readonly MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider();
-        public DAL.Entities.User GetAuthorizedUser(string login, string password)
+        public UserDTO GetAuthorizedUser(string login, string password)
         {
             string hashPassword;
-            DAL.Entities.User user = _userService.Find(x => x.Login == login).FirstOrDefault();
+            UserDTO user = _userService.Find(x => x.Login == login).FirstOrDefault();
             bool isUserExsist = user != null;
             if (!isUserExsist)
             {
                 return null;
             }
-            //using (System.IO.MemoryStream ms = new System.IO.MemoryStream(
-            //System.Text.Encoding.UTF8.GetBytes(password)))
-            //{ 
-            //    hashPassword = System.Text.Encoding.Default.GetString(md5.ComputeHash(ms));
-            //}
-
 
             var bytes = new UTF8Encoding().GetBytes(password);
             var hashBytes = MD5.Create().ComputeHash(bytes);
             hashPassword = Convert.ToBase64String(hashBytes);
 
 
-        bool isPasswordOk = (user.HashPassword == hashPassword);
+            bool isPasswordOk = (user.HashPassword == hashPassword);
             if (!isPasswordOk)
             {
                 return null;
@@ -57,32 +50,5 @@ namespace Workbook.BLL.Services
             }
             return null;
         }
-
-
-        //public bool IsUserCredentialMatched(string login, string password)
-        //{
-        //    string hashPassword;
-        //    var user = _userService.Find(x => x.Login == login).FirstOrDefault();
-        //    bool isUserExsist = user != null;
-        //    if (!isUserExsist)
-        //    {
-        //        return false;
-        //    }
-        //    using (System.IO.MemoryStream ms = new System.IO.MemoryStream(
-        //    System.Text.Encoding.UTF32.GetBytes(password)))
-        //    {
-        //        hashPassword = md5.ComputeHash(ms).ToString();
-        //    }
-        //    bool isPasswordOk = user.HashPassword == hashPassword;
-        //    if (!isPasswordOk)
-        //    {
-        //        return false;
-        //    }
-        //    if (isUserExsist && isPasswordOk)
-        //    {
-        //        return true;
-        //    }
-        //    return false;
-        //}
     }
 }

@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using Workbook.BLL.DTOs;
 using Workbook.BLL.Services.Serv;
 using Workbook.DAL.Entities;
 
@@ -16,9 +17,9 @@ namespace Company.ViewModels
         public CompanyDepartmentsViewModel(DepartmentService departmentService)
         {
             _departmentService = departmentService;
-            DepartmentsList = new ObservableCollection<Department>(_departmentService.FindAll());
+            DepartmentsList = new ObservableCollection<DepartmentDTO>(_departmentService.FindAll());
         }
 
-        public ObservableCollection<Department> DepartmentsList { get; set; }
+        public ObservableCollection<DepartmentDTO> DepartmentsList { get; set; }
     }
 }

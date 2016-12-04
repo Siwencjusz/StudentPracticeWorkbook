@@ -12,12 +12,14 @@ namespace Workbook.DAL.Entities
     public class BookNote:EntityBase
     {
         public string Note { get; set; }
-        [Required]
-        public DateTime StartDate { get; set; }
-        [Required]
-        public DateTime FinishDate { get; set; }
+
+        public DateTime? StartDate { get; set; }
+
+        public DateTime? FinishDate { get; set; }
+
         [Required,ForeignKey("WorkBookId")]
-        public virtual WorkBook WorkBook { get; set; }
+        public virtual Workbook Workbook { get; set; }
+
         public Guid WorkBookId { get; set; }
     }
 }
