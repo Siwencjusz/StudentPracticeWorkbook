@@ -46,7 +46,7 @@ namespace Workbook.BLL.Services.Serv
             //SendEmail(item.Email, subject, body);
 
             item.Login = item.Email;
-            User user=null;
+                User user=null;
             Role role=null;
             switch (item.Role.Name)
             {
