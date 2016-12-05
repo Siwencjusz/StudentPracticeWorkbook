@@ -21,7 +21,8 @@ namespace Workbook.BLL.Services.Base
         }
         public virtual void Add(Tdto item)
         {
-            _baseRepository.Add(Mapper.Map<TEntity>(item));
+            var x = Mapper.Map<TEntity>(item);
+            _baseRepository.Add(x);
             _baseRepository.Save();
         }
 

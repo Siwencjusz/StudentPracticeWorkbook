@@ -83,7 +83,7 @@ namespace Admin.ViewModels
             //UsersList.Remove(_selectedUser);
             _userService.Remove(_selectedUser);
             UsersList = new ObservableCollection<UserDTO>(_userService.FindAll());
-            _selectedUser = null;
+            _selectedUser = UsersList.FirstOrDefault();
         }
     }
 }

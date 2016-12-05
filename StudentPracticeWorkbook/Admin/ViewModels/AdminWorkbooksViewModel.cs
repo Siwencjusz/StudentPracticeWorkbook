@@ -90,7 +90,7 @@ namespace Admin.ViewModels
         {
             _workBookService.Remove(_selectedWorkBook);
             WorkbooksList.Remove(_selectedWorkBook);
-            _selectedWorkBook = null;
+            SelectedWorkBook = WorkbooksList.FirstOrDefault();
         }
     }
 }

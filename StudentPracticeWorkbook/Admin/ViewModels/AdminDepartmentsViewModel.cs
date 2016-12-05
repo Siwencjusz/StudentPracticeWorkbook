@@ -70,7 +70,7 @@ namespace Admin.ViewModels
         {
             _departmentService.Remove(_selectedDepartment);
             DepartmentsList.Remove(_selectedDepartment);
-            _selectedDepartment = null;
+            SelectedDepartment = DepartmentsList.FirstOrDefault();
         }
     }
 }

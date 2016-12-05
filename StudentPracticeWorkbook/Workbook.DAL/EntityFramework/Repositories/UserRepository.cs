@@ -13,5 +13,19 @@ namespace Workbook.DAL.EntityFramework.Repositories
         public UserRepository(StudentWorkBookContext context) : base(context)
         {
         }
+
+        public override User Add(User entity)
+        {
+            entity.Role = null;
+            return base.Add(entity);
+        }
+
+        public override void Edit(User entity)
+        {
+            entity.Role = null;
+            var x =_dbset.Find(entity.Id);
+
+            base.Edit(entity);
+        }
     }
 }
