@@ -85,10 +85,6 @@
     <Compile Include="EntityFramework\Repositories\RoleRepository.cs" />
     <Compile Include="EntityFramework\Repositories\UserRepository.cs" />
     <Compile Include="EntityFramework\Repositories\WorkBookRepository.cs" />
-    <Compile Include="Migrations\201612041823450_init.cs" />
-    <Compile Include="Migrations\201612041823450_init.Designer.cs">
-      <DependentUpon>201612041823450_init.cs</DependentUpon>
-    </Compile>
     <Compile Include="StudentWorkBookContext.cs" />
     <Compile Include="Entities\baseEntity\EntityBase.cs" />
     <Compile Include="Entities\Department.cs" />
@@ -131,11 +127,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>xxx.mdf</DependentUpon>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201612041823450_init.resx">
-      <DependentUpon>201612041823450_init.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
