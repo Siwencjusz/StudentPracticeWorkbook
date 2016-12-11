@@ -15,6 +15,7 @@ using Workbook.BLL.Services.Serv;
 using Workbook.Commons;
 using Workbook.DAL.Entities;
 using Workbook.DAL.EntityFramework;
+using Workbook.DAL.EntityFramework.Repositories;
 
 namespace Workbook.BLL.Services.Serv
 {
@@ -22,13 +23,15 @@ namespace Workbook.BLL.Services.Serv
     {
         private readonly IUserRepository _baseRepository;
         private readonly IRoleRepository _roleService;
+        private readonly IWorkBookRepository _workBookRepository;
         private readonly MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider();
         private SmtpClient _smtpClient;
 
-        public UserService(IUserRepository baseRepository, IRoleRepository roleService) : base(baseRepository)
+        public UserService(IUserRepository baseRepository, IRoleRepository roleService, IWorkBookRepository workBookRepository) : base(baseRepository)
         {
             _baseRepository = baseRepository;
             _roleService = roleService;
+            _workBookRepository = workBookRepository;
         }
 
         public override void Add(UserDTO item)
@@ -123,32 +126,53 @@ namespace Workbook.BLL.Services.Serv
         }
 
 
-        //public override void Remove(UserDTO item)
-        //{
-        //    var toDelete = _baseRepository.GetBy(x=>x.Id==item.Id).FirstOrDefault();
-        //    _baseRepository.Delete(toDelete);
-        //    _baseRepository.Save();
-        //}
+        public override void Remove(UserDTO item)
+        {
+            if (item.Role.Name=="Admin")
+            {
+                return;
+            }
+            var toDelete = _baseRepository.GetBy(x => x.Id == item.Id).FirstOrDefault();
+            if (toDelete.Role.Name=="Opiekun")
+            {
+                var  relatedWorkbooks= _workBookRepository.GetBy(x => x.EmployeeId == toDelete.Id);
+                foreach (var workbook in relatedWorkbooks)
+                {
+                    workbook.EmployeeId = null;
+                    workbook.Employee = null;
+                    _workBookRepository.Edit(workbook);
+                }
+                _workBookRepository.Save();
+            }
 
-        //public override void Update(UserDTO item)
-        //{
+            toDelete = _baseRepository.GetBy(x => x.Id == item.Id).FirstOrDefault();
+            _baseRepository.Delete(toDelete);
+            _baseRepository.Save();
+        }
 
-        //    throw new NotImplementedException();
-        //    //Role x = null;
-        //    //if (item.Role != null)
-        //    //{
-        //    //    x = _roleService.FindByID(item.Role.Id);
-        //    //}
+        public override void Update(UserDTO item)
+        {
+            var user = _baseRepository.FindById(item.Id);
+            Role x = null;
+            Department y = null;
+            if (item.Role != null)
+            {
+                x = _roleService.FindById(item.Role.Id);
+            }
             
-        //    //item.Role = null;
+            item.Role = null;
 
-        //    //if (x != null)
-        //    //{
-        //    //    item.RoleId = x.Id;
-        //    //}
+            if (x != null)
+            {
+                user.Role = x;
+                user.RoleId = x.Id;
+            }
+            user.Email = item.Email;
+            user.Name= item.Name;
+            user.Login = item.Login;
             
-            
-        //    //_baseRepository.Edit(item);
-        //}
+
+            _baseRepository.Edit(user);
+        }
     }
 }
