@@ -58,6 +58,7 @@ namespace Workbook.DAL.Migrations
                         DetailInformation = c.String(),
                         DepartmentId = c.Guid(),
                         RoleId = c.Guid(),
+                        IsStudentGetJob = c.Boolean(),
                         Discriminator = c.String(nullable: false, maxLength: 128),
                     })
                 .PrimaryKey(t => t.Id)

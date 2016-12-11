@@ -17,5 +17,7 @@ namespace Workbook.DAL.Entities
         public Guid? DepartmentId { get; set; }
 
         public virtual List<Workbook> OwnWorkBooks { get; set; }
+
+        public  bool IsStudentGetJob { get; set; }
     }
 }
