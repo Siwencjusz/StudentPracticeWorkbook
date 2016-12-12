@@ -10,6 +10,7 @@ namespace Workbook.DAL
         public StudentWorkBookContext()
             : base("StudentBook")
         {
+            this.Configuration.LazyLoadingEnabled = true;
         }
         public static StudentWorkBookContext Create()
         {
