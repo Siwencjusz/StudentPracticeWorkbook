@@ -58,6 +58,7 @@ namespace Workbook.DAL.Migrations
                         DetailInformation = c.String(),
                         DepartmentId = c.Guid(),
                         RoleId = c.Guid(),
+                        IsStudentGetJob = c.Boolean(),
                         Discriminator = c.String(nullable: false, maxLength: 128),
                     })
                 .PrimaryKey(t => t.Id)
@@ -88,8 +89,8 @@ namespace Workbook.DAL.Migrations
         
         public override void Down()
         {
-            DropForeignKey("dbo.BookNotes", "WorkBookId", "dbo.Workbooks");
             DropForeignKey("dbo.Workbooks", "StudentId", "dbo.Users");
+            DropForeignKey("dbo.BookNotes", "WorkBookId", "dbo.Workbooks");
             DropForeignKey("dbo.Workbooks", "EmployeeId", "dbo.Users");
             DropForeignKey("dbo.Workbooks", "DepartmentId", "dbo.Departments");
             DropForeignKey("dbo.Workbooks", "CompanyId", "dbo.Users");

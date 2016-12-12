@@ -52,7 +52,8 @@ namespace Workbook.BLL.Services.Base
 
         public virtual IEnumerable<Tdto> FindAll()
         {
-            return Mapper.Map<List<Tdto>>(_baseRepository.GetAll());
+            var list = _baseRepository.GetAll();
+            return Mapper.Map<List<Tdto>>(list);
         }
     }
 }

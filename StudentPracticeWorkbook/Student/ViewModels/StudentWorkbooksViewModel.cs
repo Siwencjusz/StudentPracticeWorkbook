@@ -17,12 +17,13 @@ namespace Student.ViewModels
         private readonly WorkBookService _workBookService;
         private readonly BookNoteService _bookNoteService;
 
-        public StudentWorkbooksViewModel(WorkBookService workBookService, BookNoteService bookNoteService )
+        public StudentWorkbooksViewModel(WorkBookService workBookService, BookNoteService bookNoteService)
         {
             _workBookService = workBookService;
             _bookNoteService = bookNoteService;
 
             WorkbooksList = new ObservableCollection<WorkbookDTO>(_workBookService.FindAll());
+            NotesList = new ObservableCollection<BookNoteDTO>();
 
             AddNoteCommand = new DelegateCommand<object>(AddNote, (x) => true);
             RemoveNoteCommand = new DelegateCommand<object>(RemoveNote, (x) => true);
@@ -43,17 +44,23 @@ namespace Student.ViewModels
 
         private void RemoveNote(object obj)
         {
-           _bookNoteService.Remove(_selectedBookNote);
+            _bookNoteService.Remove(_selectedBookNote);
             _selectedBookNote = null;
         }
 
         private void AddNote(object obj)
         {
-            SelectedBookNote = new BookNoteDTO();
+            SelectedBookNote = new BookNoteDTO()
+            {
+                StartDate = DateTime.Now
+
+            };
             SelectedBookNote.Workbook = SelectedWorkBook;
+            NotesList.Add(_selectedBookNote);
         }
 
         public ObservableCollection<WorkbookDTO> WorkbooksList { get; set; }
+        public ObservableCollection<BookNoteDTO> NotesList { get; set; }
 
         private WorkbookDTO _selectedWorkBook;
         public WorkbookDTO SelectedWorkBook
@@ -62,13 +69,11 @@ namespace Student.ViewModels
             set
             {
                 _selectedWorkBook = value;
-                OnPropertyChanged();
+                NotesList = new ObservableCollection<BookNoteDTO>(_selectedWorkBook.Noteses);
+                OnPropertyChanged("SelectedWorkBook");
+                OnPropertyChanged("NotesList");
             }
         }
-
-        public ICommand AddNoteCommand { get; }
-        public ICommand RemoveNoteCommand { get; }
-        public ICommand SaveNoteCommand { get; }
 
         private BookNoteDTO _selectedBookNote;
         public BookNoteDTO SelectedBookNote
@@ -80,6 +85,12 @@ namespace Student.ViewModels
                 OnPropertyChanged();
             }
         }
+
+        public ICommand AddNoteCommand { get; }
+        public ICommand RemoveNoteCommand { get; }
+        public ICommand SaveNoteCommand { get; }
+
+
 
 
     }
