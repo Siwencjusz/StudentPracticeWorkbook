@@ -1,4 +1,6 @@
-﻿using Workbook.BLL.DTOs;
+﻿using System;
+using System.Linq;
+using Workbook.BLL.DTOs;
 using Workbook.BLL.Services.Base;
 using Workbook.BLL.Services.Interfaces;
 using Workbook.DAL.Entities;
@@ -52,12 +54,25 @@ namespace Workbook.BLL.Services.Serv
             var company = _userRepository.FindById(item.Company.Id);
             workbook.Company = null;
             workbook.CompanyId = company.Id;
+            //var noteDTO= item.Noteses.FirstOrDefault(x => x.Id == new Guid());
+            //var note = new BookNote();
+            //if (noteDTO!=null)
+            //{
+            //    note.FinishDate = noteDTO.FinishDate;
+            //    note.StartDate = noteDTO.StartDate;
+            //    note.Note = noteDTO.Note;
+            //    note.WorkBookId = item.Id;
+            //}
 
             var student = _userRepository.FindById(item.Student.Id);
             workbook.Student = null;
             workbook.StudentId = student.Id;
             workbook.GradeCompany = item.GradeCompany;
             workbook.GradeDepartment = item.GradeCompany;
+            //if (note.WorkBookId!= new Guid())
+            //{
+            //    workbook.Noteses.Add(note);
+            //}
             _baseRepository.Edit(workbook);
             _baseRepository.Save();
         }
@@ -69,11 +84,14 @@ namespace Workbook.BLL.Services.Serv
                 return;
             }
             var workbook = _baseRepository.FindById(item.Id);
-
-            foreach (var note in workbook.Noteses)
+            if (workbook.Noteses != null)
             {
-                _iBookNoteRepository.Delete(note);
+                foreach (var note in workbook.Noteses)
+                {
+                    _iBookNoteRepository.Delete(note);
+                }
             }
+            
             workbook.Noteses = null;
 
             workbook.Employee = null;

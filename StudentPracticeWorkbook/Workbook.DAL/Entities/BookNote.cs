@@ -17,7 +17,7 @@ namespace Workbook.DAL.Entities
 
         public DateTime? FinishDate { get; set; }
 
-        [Required,ForeignKey("WorkBookId")]
+        [ForeignKey("WorkBookId")]
         public virtual Workbook Workbook { get; set; }
 
         public Guid WorkBookId { get; set; }

@@ -41,22 +41,30 @@ namespace Workbook.BLL.Services.Serv
         {
             var users = _userRepository.GetBy(x => x.Department.Id == item.Id);
             var workbooks= _workBookRepository.GetBy(x => x.Department.Id == item.Id);
-            foreach (var user in users)
+
+
+            if (users!=null)
             {
-                user.Department = null;
-                user.DepartmentId = null;
-                _userRepository.Edit(user);
-              
+                foreach (var user in users)
+                {
+                    user.Department = null;
+                    user.DepartmentId = null;
+                    _userRepository.Edit(user);
+
+                }
             }
             _userRepository.Save();
-            foreach (var workbook in workbooks)
+            if (workbooks!=null)
             {
-                workbook.Department = null;
-                workbook.DepartmentId = null;
-                _workBookRepository.Edit(workbook);
-               
-            }
+                foreach (var workbook in workbooks)
+                {
+                    workbook.Department = null;
+                    workbook.DepartmentId = null;
+                    _workBookRepository.Edit(workbook);
 
+                }
+
+            }
             _workBookRepository.Save();
             var department = _baseRepository.FindById(item.Id);
             department.Users = null;

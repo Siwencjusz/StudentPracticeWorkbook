@@ -89,8 +89,8 @@ namespace Workbook.DAL.Migrations
         
         public override void Down()
         {
-            DropForeignKey("dbo.BookNotes", "WorkBookId", "dbo.Workbooks");
             DropForeignKey("dbo.Workbooks", "StudentId", "dbo.Users");
+            DropForeignKey("dbo.BookNotes", "WorkBookId", "dbo.Workbooks");
             DropForeignKey("dbo.Workbooks", "EmployeeId", "dbo.Users");
             DropForeignKey("dbo.Workbooks", "DepartmentId", "dbo.Departments");
             DropForeignKey("dbo.Workbooks", "CompanyId", "dbo.Users");

@@ -56,7 +56,7 @@ namespace Workbook.BLL.Services.Serv
                 case "Student":
                     user = Mapper.Map<Student>(item);
                     role = _roleService.FindById(user.RoleId.Value);
-                    user.Role = role;
+                    user.Role =  null;
                     user.RoleId = role.Id;
                     //user.Role = null;
                     //user.RoleId = null;
@@ -64,19 +64,19 @@ namespace Workbook.BLL.Services.Serv
                 case "Admin":
                     user = Mapper.Map<User>(item);
                     role = _roleService.FindById(user.RoleId.Value);
-                    user.Role = role;
+                    user.Role = null;
                     user.RoleId = role.Id;
                     _baseRepository.Add(user); break;
                 case "Firma":
                     user = Mapper.Map<Company>(item);
                     role = _roleService.FindById(user.RoleId.Value);
-                    user.Role = role;
+                    user.Role = null;
                     user.RoleId = role.Id;
                     _baseRepository.Add(user); break;
                 case "Opiekun":
                     user = Mapper.Map<Employee>(item);
                     role = _roleService.FindById(user.RoleId.Value);
-                    user.Role = role;
+                    user.Role = null;
                     user.RoleId = role.Id;
                     _baseRepository.Add(user); break;
             }
@@ -128,6 +128,10 @@ namespace Workbook.BLL.Services.Serv
 
         public override void Remove(UserDTO item)
         {
+            if (item==null|| item.Id== new Guid())
+            {
+                return;
+            }
             if (item.Role.Name=="Admin")
             {
                 return;
@@ -164,7 +168,7 @@ namespace Workbook.BLL.Services.Serv
 
             if (x != null)
             {
-                user.Role = x;
+                user.Role = null;
                 user.RoleId = x.Id;
             }
             user.Email = item.Email;

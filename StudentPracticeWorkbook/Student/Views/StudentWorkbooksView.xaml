@@ -27,7 +27,7 @@
             </ListView.View>
         </ListView>
 
-        <ListView Grid.Column="1" Grid.Row="1" Margin="5" ItemsSource="{Binding SelectedWorkBook.Noteses}" SelectedItem="{Binding SelectedBookNote}">
+        <ListView Grid.Column="1" Grid.Row="1" Margin="5" ItemsSource="{Binding NotesList}" SelectedItem="{Binding SelectedBookNote}">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Data rozpoczęcia" DisplayMemberBinding="{Binding StartDate}"/>
