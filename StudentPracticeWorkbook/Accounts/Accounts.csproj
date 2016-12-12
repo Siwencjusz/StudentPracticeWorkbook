@@ -82,6 +82,7 @@
   <ItemGroup>
     <Compile Include="AccountsModule.cs" />
     <Compile Include="LoggedUserService.cs" />
+    <Compile Include="PasswordHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
